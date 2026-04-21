@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerobotix — Setup Instructions</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b3e; --navy-mid: #142252;
+    --orange: #f26522; --white: #f8f9ff; --muted: #8a9bbf;
+    --green: #3ecf6a; --border: rgba(255,255,255,0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); padding: 40px 20px 80px; }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  h1 { font-family: 'Rajdhani', sans-serif; font-size: 36px; font-weight: 700; margin-bottom: 6px; }
+  h1 span { color: var(--orange); }
+  .subtitle { color: var(--muted); margin-bottom: 40px; font-size: 14px; }
+  .step {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .step::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--orange), transparent);
+  }
+  .step-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 8px;
+  }
+  .step h2 { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+  .step p:last-child { margin-bottom: 0; }
+  .step strong { color: var(--white); }
+  code {
+    font-family: 'DM Mono', monospace;
+    background: rgba(255,255,255,0.07);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--orange);
+  }
+  .note {
+    background: rgba(62,207,106,0.08);
+    border: 1px solid rgba(62,207,106,0.25);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--green);
+    font-size: 13px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  .warning {
+    background: rgba(242,101,34,0.1);
+    border: 1px solid rgba(242,101,34,0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #ffaa70;
+    font-size: 13px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  ul { padding-left: 18px; }
+  ul li { color: var(--muted); font-size: 14px; line-height: 1.8; }
+  ul li strong { color: var(--white); }
+  .divider { height: 1px; background: var(--border); margin: 32px 0; }
+  .done {
+    text-align: center;
+    padding: 30px;
+    background: rgba(62,207,106,0.06);
+    border: 1px solid rgba(62,207,106,0.2);
+    border-radius: 12px;
+  }
+  .done h2 { font-family: 'Rajdhani', sans-serif; font-size: 28px; color: var(--green); margin-bottom: 8px; }
+  .done p { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Setup <span>Instructions</span></h1>
+  <p class="subtitle">Aerobotix Enrollment Form → Google Sheets Integration · One-time setup · ~10 minutes</p>
+
+  <div class="step">
+    <div class="step-num">Step 1</div>
+    <h2>Create a Google Sheet</h2>
+    <p>Go to <strong>sheets.google.com</strong> and create a new blank spreadsheet.</p>
+    <p>Name it something like <strong>"Aerobotix Enrollments"</strong>. Leave it empty — the script will auto-create the headers on the first submission.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 2</div>
+    <h2>Open Apps Script Editor</h2>
+    <p>Inside your Google Sheet, click the menu: <strong>Extensions → Apps Script</strong></p>
+    <p>This opens the Apps Script editor in a new tab. Delete any default code you see in the editor (the empty <code>myFunction()</code> block).</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 3</div>
+    <h2>Paste the Script (Code.gs)</h2>
+    <p>Open the file <strong>Code.gs</strong> (provided alongside this guide). Copy its entire contents and paste it into the Apps Script editor.</p>
+    <p>Press <strong>Ctrl + S</strong> (or click the Save icon) to save. Name your project <strong>"Aerobotix Form Handler"</strong> when prompted.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 4</div>
+    <h2>Deploy as a Web App</h2>
+    <p>In the Apps Script editor, click the blue <strong>"Deploy"</strong> button (top right) → <strong>"New deployment"</strong>.</p>
+    <ul>
+      <li><strong>Type:</strong> Select "Web app"</li>
+      <li><strong>Description:</strong> Aerobotix Enrollment Form</li>
+      <li><strong>Execute as:</strong> Me (your Google account)</li>
+      <li><strong>Who has access:</strong> <strong>Anyone</strong> ← This is important so the form can submit</li>
+    </ul>
+    <p style="margin-top:10px;">Click <strong>Deploy</strong>. Google will ask you to <strong>Authorize</strong> the script — click through and allow access.</p>
+    <div class="note">✅ After deploying, you'll see a <strong>Web App URL</strong> that looks like:<br><code>https://script.google.com/macros/s/AKfycb.../exec</code><br>Copy this URL — you need it in Step 5.</div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 5</div>
+    <h2>Paste URL into the HTML Form</h2>
+    <p>Open <strong>aerobotix_enrollment_form.html</strong> in any text editor (Notepad, VS Code, etc.).</p>
+    <p>Find this line near the bottom of the file:</p>
+    <p><code>const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";</code></p>
+    <p>Replace <code>YOUR_APPS_SCRIPT_URL_HERE</code> with the Web App URL you copied in Step 4. Keep the quotes.</p>
+    <div class="warning">⚠️ Every time you make a change to Code.gs and redeploy, Google creates a new version. Make sure you always click <strong>"Manage deployments" → edit existing deployment → "New version"</strong> rather than creating a fresh deployment, so the URL stays the same.</div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 6</div>
+    <h2>Host the HTML Form (Choose One)</h2>
+    <p>The HTML file is self-contained. You can host it anywhere:</p>
+    <ul>
+      <li><strong>Simplest:</strong> Upload to <strong>GitHub Pages</strong> (free, instant HTTPS)</li>
+      <li><strong>Your website:</strong> Upload via cPanel or FTP to any web host</li>
+      <li><strong>Quick share:</strong> Use <strong>tiiny.host</strong> (drag & drop, free)</li>
+      <li><strong>Offline/local:</strong> Just open the .html file in a browser — still works if internet is available for the form submission</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 7</div>
+    <h2>Test It</h2>
+    <p>Open the form, fill in all fields, and submit. Then check your Google Sheet — a new row should appear within a few seconds with all the student's information.</p>
+    <p>The sheet columns will be: <strong>Timestamp · Full Name · DOB · Gender · Address · Mobile · WhatsApp · Email · Guardian · Qualification · Stream · Institution · Year · Occupation · Course/Track · Batch · Source · Motivation</strong></p>
+    <div class="note">✅ That's it! Every new submission now lands directly in your Google Sheet automatically — no database, no maintenance needed.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="done">
+    <h2>🎉 You're Live!</h2>
+    <p>Students submit the form → Data appears in Google Sheets instantly.<br>Share the form link via WhatsApp, Instagram bio, or your website.</p>
+  </div>
+</div>
+</body>
+</html>

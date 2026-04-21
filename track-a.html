@@ -1,0 +1,249 @@
+<html class="dark" lang="en" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track A — Junior Robotics | Aerobotix Edtech Institute</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --deep-black: #050505;
+    --cyan-glow: #00f2ff;
+    --purple-glow: #7701d0;
+    --light-blue: #a5f3fc;
+  }
+  body {
+    background-color: var(--deep-black);
+    color: #e5e2e1;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  .noise-texture {
+    position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .neural-bg {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(0, 242, 255, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(119, 1, 208, 0.03) 0%, transparent 40%);
+  }
+  .glass-panel {
+    background: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative; overflow: hidden;
+  }
+  .glass-panel:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 242, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0, 242, 255, 0.05);
+  }
+  .card-glow {
+    position: absolute; top: 50%; left: 50%; width: 120px; height: 120px;
+    background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+    opacity: 0; transform: translate(-50%, -50%); transition: opacity 0.5s;
+    pointer-events: none; filter: blur(40px);
+  }
+  .glass-panel:hover .card-glow { opacity: 0.08; }
+  .hero-gradient-text {
+    background: linear-gradient(135deg, #fff 0%, #00f2ff 50%, #7701d0 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .neon-glow { box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); transition: all 0.3s ease; }
+  .neon-glow:hover { box-shadow: 0 0 30px rgba(0, 242, 255, 0.6); }
+  .module-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem; font-weight: 700; line-height: 1;
+    background: linear-gradient(135deg, rgba(0,242,255,0.15), rgba(119,1,208,0.1));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+  .animate-in:nth-child(1) { animation-delay: 0.1s; }
+  .animate-in:nth-child(2) { animation-delay: 0.2s; }
+  .animate-in:nth-child(3) { animation-delay: 0.3s; }
+  .animate-in:nth-child(4) { animation-delay: 0.4s; }
+</style>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background": "#050505",
+          "primary": "#e1fdff",
+          "primary-container": "#00f2ff",
+          "secondary": "#dcb8ff",
+          "secondary-container": "#7701d0",
+          "surface": "#0e0e0e",
+          "outline": "#849495",
+          "on-surface": "#e5e2e1",
+        },
+        fontFamily: {
+          "headline": ["Space Grotesk"],
+          "body": ["Inter"],
+        }
+      },
+    }
+  }
+</script>
+</head>
+<body class="selection:bg-primary-container selection:text-black">
+<div class="noise-texture"></div>
+<div class="neural-bg"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
+  <a href="code.html" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
+    <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+    Aerobotix
+  </a>
+  <div class="flex gap-4 md:gap-6 items-center">
+    <a href="code.html" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">← Back</a>
+    <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-primary-container transition-all">Enroll Now</a>
+  </div>
+</div>
+</nav>
+
+<main class="relative z-10 pt-32 pb-20">
+
+  <!-- Hero -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-32">
+    <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
+      <div class="text-6xl md:text-8xl">🤖</div>
+      <div>
+        <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container mb-3 block">Class 4–6 · Track A</span>
+        <h1 class="text-4xl md:text-7xl font-headline font-bold tracking-tighter hero-gradient-text mb-6">Junior Robotics</h1>
+        <p class="text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">Start with gears, build your first robot, and discover how AI thinks — all through hands-on play and real projects.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-6 items-center">
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Monthly Fee</span>
+        <span class="text-2xl font-bold font-headline">₹800</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Duration</span>
+        <span class="text-2xl font-bold font-headline">Ongoing</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Projects</span>
+        <span class="text-2xl font-bold font-headline">10+ Robots</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-32">
+    <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-4">What You'll Learn</h2>
+    <p class="text-white/40 mb-16 text-lg">A progressive curriculum that builds real engineering intuition from day one.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Module 1 -->
+      <div class="glass-panel rounded-3xl p-8 md:p-10 animate-in">
+        <div class="card-glow"></div>
+        <div class="flex items-start gap-6 mb-6">
+          <span class="module-number">01</span>
+          <div>
+            <h3 class="text-xl font-bold font-headline tracking-tight mb-2">Gears & Mechanisms</h3>
+            <span class="text-[9px] font-bold tracking-widest text-primary-container uppercase">Foundation</span>
+          </div>
+        </div>
+        <p class="text-white/50 leading-relaxed mb-6">Understand how gears, levers, pulleys, and linkages work together. Learn the mechanical principles behind every robot through hands-on assembly and experimentation.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Spur Gears</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Worm Gears</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Linkages</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Pulleys</span>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="glass-panel rounded-3xl p-8 md:p-10 animate-in">
+        <div class="card-glow"></div>
+        <div class="flex items-start gap-6 mb-6">
+          <span class="module-number">02</span>
+          <div>
+            <h3 class="text-xl font-bold font-headline tracking-tight mb-2">AI Basics</h3>
+            <span class="text-[9px] font-bold tracking-widest text-primary-container uppercase">Intelligence</span>
+          </div>
+        </div>
+        <p class="text-white/50 leading-relaxed mb-6">Discover how artificial intelligence works at a fundamental level. Explore how machines see, hear, and make decisions — explained through fun activities and visual experiments kids can relate to.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">How AI Thinks</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Pattern Recognition</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Smart Machines</span>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="glass-panel rounded-3xl p-8 md:p-10 animate-in">
+        <div class="card-glow"></div>
+        <div class="flex items-start gap-6 mb-6">
+          <span class="module-number">03</span>
+          <div>
+            <h3 class="text-xl font-bold font-headline tracking-tight mb-2">Robochamp — Your First Robot</h3>
+            <span class="text-[9px] font-bold tracking-widest text-primary-container uppercase">Build</span>
+          </div>
+        </div>
+        <p class="text-white/50 leading-relaxed mb-6">Build your very first working robot using plug-and-play components. Robochamp teaches assembly, wiring, and basic control — the thrill of seeing something you built come alive.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Plug & Play</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Motor Control</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">First Build</span>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="glass-panel rounded-3xl p-8 md:p-10 animate-in">
+        <div class="card-glow"></div>
+        <div class="flex items-start gap-6 mb-6">
+          <span class="module-number">04</span>
+          <div>
+            <h3 class="text-xl font-bold font-headline tracking-tight mb-2">10+ Robot Models</h3>
+            <span class="text-[9px] font-bold tracking-widest text-primary-container uppercase">Mastery</span>
+          </div>
+        </div>
+        <p class="text-white/50 leading-relaxed mb-6">Go beyond your first robot and build over 10 different models — each progressively more complex. From line followers to obstacle avoiders, every model teaches a new engineering concept.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Line Follower</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Obstacle Avoider</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Gripper Bot</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Battle Bot</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-[900px] mx-auto px-6 md:px-8 text-center">
+    <div class="glass-panel rounded-[48px] p-10 md:p-20">
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Ready to Build?</h2>
+      <p class="text-white/40 mb-12 text-lg max-w-lg mx-auto">Join Track A and start your robotics journey. No prior experience needed — just curiosity.</p>
+      <div class="flex flex-col md:flex-row justify-center gap-4">
+        <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary-container transition-all neon-glow inline-block">Enroll Now</a>
+        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20A%20(Junior%20Robotics)." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Talk to Counsellor</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-16 bg-[#050505] border-t border-white/5 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-center px-10 max-w-7xl mx-auto gap-8">
+  <div class="text-2xl font-bold tracking-tighter text-white font-headline">Aerobotix</div>
+  <p class="text-white/30 text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 Aerobotix Edtech Institute.</p>
+</div>
+</footer>
+</body>
+</html>

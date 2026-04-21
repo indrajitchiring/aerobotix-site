@@ -1,0 +1,366 @@
+<html class="dark" lang="en" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track B — Senior Robotics & AI | Aerobotix Edtech Institute</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --deep-black: #050505;
+    --cyan-glow: #00f2ff;
+    --purple-glow: #7701d0;
+    --light-blue: #a5f3fc;
+  }
+  body {
+    background-color: var(--deep-black);
+    color: #e5e2e1;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  .noise-texture {
+    position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .neural-bg {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(119, 1, 208, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(0, 242, 255, 0.03) 0%, transparent 40%);
+  }
+  .glass-panel {
+    background: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative; overflow: hidden;
+  }
+  .glass-panel:hover {
+    transform: translateY(-4px);
+    border-color: rgba(119, 1, 208, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(119, 1, 208, 0.08);
+  }
+  .card-glow {
+    position: absolute; top: 50%; left: 50%; width: 120px; height: 120px;
+    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+    opacity: 0; transform: translate(-50%, -50%); transition: opacity 0.5s;
+    pointer-events: none; filter: blur(40px);
+  }
+  .glass-panel:hover .card-glow { opacity: 0.08; }
+  .hero-gradient-text {
+    background: linear-gradient(135deg, #fff 0%, #dcb8ff 50%, #7701d0 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .neon-glow-purple { box-shadow: 0 0 15px rgba(119, 1, 208, 0.4); transition: all 0.3s ease; }
+  .neon-glow-purple:hover { box-shadow: 0 0 30px rgba(119, 1, 208, 0.7); }
+  .module-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem; font-weight: 700; line-height: 1;
+    background: linear-gradient(135deg, rgba(119,1,208,0.2), rgba(220,184,255,0.15));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .phase-label {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+  .animate-in:nth-child(1) { animation-delay: 0.1s; }
+  .animate-in:nth-child(2) { animation-delay: 0.15s; }
+  .animate-in:nth-child(3) { animation-delay: 0.2s; }
+  .animate-in:nth-child(4) { animation-delay: 0.25s; }
+  .animate-in:nth-child(5) { animation-delay: 0.3s; }
+  .animate-in:nth-child(6) { animation-delay: 0.35s; }
+</style>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background": "#050505",
+          "primary": "#e1fdff",
+          "primary-container": "#00f2ff",
+          "secondary": "#dcb8ff",
+          "secondary-container": "#7701d0",
+          "surface": "#0e0e0e",
+          "outline": "#849495",
+          "on-surface": "#e5e2e1",
+        },
+        fontFamily: {
+          "headline": ["Space Grotesk"],
+          "body": ["Inter"],
+        }
+      },
+    }
+  }
+</script>
+</head>
+<body class="selection:bg-secondary-container selection:text-white">
+<div class="noise-texture"></div>
+<div class="neural-bg"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
+  <a href="code.html" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
+    <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+    Aerobotix
+  </a>
+  <div class="flex gap-4 md:gap-6 items-center">
+    <a href="code.html" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">← Back</a>
+    <a href="aerobotix_enrollment_form.html" class="bg-secondary-container text-white px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-secondary transition-all neon-glow-purple">Enroll Now</a>
+  </div>
+</div>
+</nav>
+
+<main class="relative z-10 pt-32 pb-20">
+
+  <!-- Hero -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-32">
+    <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
+      <div class="text-6xl md:text-8xl">🚁</div>
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary mb-0 block">Class 7–12 · Track B</span>
+          <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full">Featured</span>
+        </div>
+        <h1 class="text-4xl md:text-7xl font-headline font-bold tracking-tighter hero-gradient-text mb-6">Senior Robotics & AI</h1>
+        <p class="text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">The flagship 15-month journey. From Scratch and basic electronics to Python, Arduino, drones, and autonomous robots powered by AI.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-6 items-center">
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Monthly Fee</span>
+        <span class="text-2xl font-bold font-headline text-secondary">₹950</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Duration</span>
+        <span class="text-2xl font-bold font-headline">15 Months</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Outcome</span>
+        <span class="text-2xl font-bold font-headline">Autonomous Robots</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 1: Foundations -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-secondary-container pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Phase 1</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">Foundations</h2>
+      <p class="text-white/40 text-lg">Programming fundamentals, electronics basics, and visual coding.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">01</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Scratch Programming</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Visual block-based coding to build logic, loops, conditionals, and event-driven thinking — the gateway to programming.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Logic</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Loops</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Events</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">02</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">App Inventor — Mobile Apps</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Build Android apps using visual drag-and-drop blocks. Create interactive interfaces, remote controls, and dashboards — the bridge between visual coding and real-world applications.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">App Inventor</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Android</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Visual Coding</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">03</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Basic Electronics & Circuits</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Understand voltage, current, resistance, LEDs, breadboards, and circuit design. The hardware foundation for every robot you'll build.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Circuits</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">LEDs</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Breadboard</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">04</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Python Basics & Libraries</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Learn Python from scratch — variables, functions, data structures — then explore essential libraries for data handling and automation.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Python</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">NumPy</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Pandas</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">05</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">HTML Basics</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Build simple web pages and understand how the web works — structure, styling, and basic interactivity. A digital literacy essential.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">HTML</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">CSS</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/10 text-[8px] uppercase font-bold text-secondary">Web</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHASE 2: Hardware & Robotics -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-primary-container pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container block mb-2">Phase 2</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">Hardware & Robotics</h2>
+      <p class="text-white/40 text-lg">Microcontrollers, sensors, 3D design, and building real robots.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">06</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Arduino & Microcontrollers</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Program Arduino boards to control motors, LEDs, and sensors. Learn about different MCUs and when to use each one.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Arduino</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">ESP32</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">MCUs</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">07</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Sensors & Actuators</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Give your robots the ability to see, hear, and feel. Ultrasonic, IR, temperature, gyroscope — learn how each sensor feeds data to your code.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Ultrasonic</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">IR</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Gyroscope</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">08</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Creo 3D CAD & 3D Printing</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Design custom robot parts in Creo CAD and bring them to life with 3D printing. From digital model to physical prototype in hours.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Creo</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">3D Print</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Prototyping</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">09</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Robot Builds — Robostar to Champion</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Build progressively complex robots — Robostar, Champion, and Challenger. Each model introduces new mechanisms, sensors, and control techniques.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Robostar</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Champion</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[8px] uppercase font-bold text-primary-container">Challenger</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHASE 3: AI, IoT & Drones -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-secondary pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Phase 3</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">AI, IoT & Drones</h2>
+      <p class="text-white/40 text-lg">Machine learning, connected devices, autonomous flight, and app development.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">10</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Machine Learning & Deep Learning</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Train models to classify, predict, and recognize patterns. Understand neural networks and how AI learns from data — applied to real robot projects.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">ML</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">Deep Learning</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">Neural Nets</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">11</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">IoT — Internet of Things</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Connect your devices to the internet. Build smart systems that send data to the cloud, respond to remote commands, and talk to each other.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">WiFi</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">Cloud</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">Smart Devices</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in">
+        <div class="card-glow"></div>
+        <span class="module-number">12</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Drone Flying & Autonomous Flight</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Learn to fly drones manually, then program autonomous flight paths. Understand PID control, GPS navigation, and obstacle avoidance in the air.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">Drones</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">PID</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary/10 text-[8px] uppercase font-bold text-secondary">Autonomous</span>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-8 animate-in border border-secondary-container/30 bg-gradient-to-b from-secondary-container/10 to-transparent">
+        <div class="card-glow"></div>
+        <span class="module-number">13</span>
+        <h3 class="text-lg font-bold font-headline tracking-tight mt-4 mb-2">Capstone: Autonomous Robot</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">The culmination — build a fully autonomous robot that sees, thinks, and acts. Combine everything: sensors, AI, code, and mechanical design into one intelligent machine.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/20 text-[8px] uppercase font-bold text-secondary">Capstone</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/20 text-[8px] uppercase font-bold text-secondary">Autonomous</span>
+          <span class="px-2.5 py-1 rounded-full bg-secondary-container/20 text-[8px] uppercase font-bold text-secondary">Full Stack</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-[900px] mx-auto px-6 md:px-8 text-center">
+    <div class="glass-panel rounded-[48px] p-10 md:p-20 border-secondary-container/20">
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Start Your Journey</h2>
+      <p class="text-white/40 mb-12 text-lg max-w-lg mx-auto">15 months from beginner to building autonomous robots and flying AI-powered drones.</p>
+      <div class="flex flex-col md:flex-row justify-center gap-4">
+        <a href="aerobotix_enrollment_form.html" class="bg-secondary-container text-white px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-secondary transition-all neon-glow-purple inline-block">Enroll Now</a>
+        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20B%20(Senior%20Robotics%20%26%20AI)." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Talk to Counsellor</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-16 bg-[#050505] border-t border-white/5 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-center px-10 max-w-7xl mx-auto gap-8">
+  <div class="text-2xl font-bold tracking-tighter text-white font-headline">Aerobotix</div>
+  <p class="text-white/30 text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 Aerobotix Edtech Institute.</p>
+</div>
+</footer>
+</body>
+</html>

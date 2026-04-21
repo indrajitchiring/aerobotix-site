@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerobotix Edtech Institute — Student Enrollment</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --navy-mid: #142252;
+    --navy-light: #1e3370;
+    --orange: #f26522;
+    --orange-light: #ff8c42;
+    --orange-glow: rgba(242,101,34,0.18);
+    --white: #f8f9ff;
+    --muted: #8a9bbf;
+    --input-bg: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.1);
+    --border-focus: rgba(242,101,34,0.7);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(242,101,34,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(242,101,34,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(242,101,34,0.12) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-wrap {
+    position: relative; z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .logo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 18px;
+    margin-bottom: 24px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .logo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow: 0 0 8px var(--orange);
+    animation: pulse 2s infinite;
+  }
+  .header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span { color: var(--orange); }
+  .header p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    margin: 20px auto;
+  }
+  .form-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-light), transparent);
+  }
+  .form-card:nth-child(2) { animation-delay: 0.1s; }
+  .form-card:nth-child(3) { animation-delay: 0.2s; }
+  .form-card:nth-child(4) { animation-delay: 0.3s; }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .form-grid { display: grid; gap: 18px; }
+  .form-grid-2 { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 520px) { .form-grid-2 { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.5px; }
+  label .req { color: var(--orange); margin-left: 2px; }
+  input, select, textarea {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(138,155,191,0.5); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(242,101,34,0.1);
+    background: rgba(255,255,255,0.06);
+  }
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f26522' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+  }
+  select option { background: var(--navy-mid); color: var(--white); }
+  textarea { resize: vertical; min-height: 90px; }
+  .course-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .course-option { display: none; }
+  .course-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--input-bg);
+  }
+  .course-label:hover {
+    border-color: rgba(242,101,34,0.4);
+    background: rgba(242,101,34,0.05);
+  }
+  .course-option:checked + .course-label {
+    border-color: var(--orange);
+    background: var(--orange-glow);
+    box-shadow: 0 0 0 1px var(--orange);
+  }
+  .course-icon {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.06);
+  }
+  .course-option:checked + .course-label .course-icon { background: var(--orange-glow); }
+  .course-info { flex: 1; }
+  .course-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .course-age {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--orange-light);
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+  }
+  .course-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .course-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 50px;
+    background: rgba(242,101,34,0.15);
+    color: var(--orange);
+    align-self: flex-start;
+    white-space: nowrap;
+  }
+  .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .radio-option { display: none; }
+  .radio-label {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--muted);
+  }
+  .radio-label:hover { border-color: rgba(242,101,34,0.4); color: var(--white); }
+  .radio-option:checked + .radio-label {
+    border-color: var(--orange);
+    background: var(--orange-glow);
+    color: var(--white);
+  }
+  .submit-wrap { text-align: center; animation: fadeUp 0.7s 0.4s ease both; }
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(242,101,34,0.35);
+    min-width: 240px;
+    justify-content: center;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(242,101,34,0.5); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .footer-note { margin-top: 16px; font-size: 12px; color: var(--muted); }
+
+  /* Spinner */
+  .spinner {
+    display: none;
+    width: 18px; height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  .btn-submit.loading .spinner { display: block; }
+  .btn-submit.loading .btn-text { display: none; }
+  .btn-submit.loading .btn-arrow { display: none; }
+
+  /* Error banner */
+  .error-banner {
+    display: none;
+    background: rgba(232,74,74,0.15);
+    border: 1px solid rgba(232,74,74,0.4);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #ff9090;
+    font-size: 13px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .error-banner.show { display: block; }
+
+  .success-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(13,27,62,0.97);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+  }
+  .success-overlay.show { display: flex; }
+  .success-icon {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--orange-glow);
+    border: 2px solid var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    margin-bottom: 24px;
+    animation: popIn 0.4s ease;
+  }
+  .success-overlay h2 { font-family: 'Rajdhani', sans-serif; font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+  .success-overlay h2 span { color: var(--orange); }
+  .success-overlay p { color: var(--muted); max-width: 380px; line-height: 1.6; margin-bottom: 28px; }
+  .btn-back {
+    background: none;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-back:hover { background: var(--orange-glow); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div class="header">
+    <div class="logo-badge"><div class="logo-dot"></div> Aerobotix Edtech Institute</div>
+    <h1>Student <span>Enrollment</span><br>Application</h1>
+    <div class="divider"></div>
+    <p>Join Dibrugarh's premier institute for AI, Robotics & Drone Technology.<br>Fill in your details and choose your pathway below.</p>
+  </div>
+
+  <form id="enrollForm" novalidate>
+
+    <!-- Section 1: Personal Info -->
+    <div class="form-card">
+      <div class="section-title">Personal Information</div>
+      <div class="form-grid">
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" name="fullName" placeholder="e.g. Rahul Sharma" required>
+          </div>
+          <div class="field">
+            <label>Date of Birth <span class="req">*</span></label>
+            <input type="date" name="dob" required>
+          </div>
+        </div>
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>Gender <span class="req">*</span></label>
+            <select name="gender" required>
+              <option value="" disabled selected>Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Nationality</label>
+            <input type="text" name="nationality" placeholder="e.g. Indian" value="Indian">
+          </div>
+        </div>
+        <div class="field">
+          <label>Permanent Address <span class="req">*</span></label>
+          <textarea name="address" placeholder="House No., Street, Village/Town, District, State, PIN" required></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Contact -->
+    <div class="form-card">
+      <div class="section-title">Contact Details</div>
+      <div class="form-grid">
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>Mobile Number <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="field">
+            <label>WhatsApp Number</label>
+            <input type="tel" name="whatsapp" placeholder="If different from mobile">
+          </div>
+        </div>
+        <div class="field">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="yourname@email.com" required>
+        </div>
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>Parent / Guardian Name <span class="req">*</span></label>
+            <input type="text" name="guardianName" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label>Guardian Contact <span class="req">*</span></label>
+            <input type="tel" name="guardianPhone" placeholder="Mobile number" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Academic -->
+    <div class="form-card">
+      <div class="section-title">Academic Background</div>
+      <div class="form-grid">
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>Highest Qualification <span class="req">*</span></label>
+            <select name="qualification" required>
+              <option value="" disabled selected>Select qualification</option>
+              <option>Class 8 – 9</option>
+              <option>Class 10 (HSLC)</option>
+              <option>Class 11 – 12 (HS)</option>
+              <option>Diploma / ITI</option>
+              <option>Graduate (B.Sc / B.Tech / BA / BCom)</option>
+              <option>Postgraduate</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Stream / Subject</label>
+            <input type="text" name="stream" placeholder="e.g. Science, Engineering">
+          </div>
+        </div>
+        <div class="form-grid form-grid-2">
+          <div class="field">
+            <label>School / College Name</label>
+            <input type="text" name="institution" placeholder="Last attended institution">
+          </div>
+          <div class="field">
+            <label>Year of Passing</label>
+            <input type="number" name="yearPassing" placeholder="e.g. 2024" min="2000" max="2030">
+          </div>
+        </div>
+        <div class="field">
+          <label>Current Occupation <span class="req">*</span></label>
+          <div class="radio-group">
+            <input class="radio-option" type="radio" name="occupation" id="occ1" value="Student"><label class="radio-label" for="occ1">Student</label>
+            <input class="radio-option" type="radio" name="occupation" id="occ2" value="Working Professional"><label class="radio-label" for="occ2">Working Professional</label>
+            <input class="radio-option" type="radio" name="occupation" id="occ3" value="Entrepreneur"><label class="radio-label" for="occ3">Entrepreneur</label>
+            <input class="radio-option" type="radio" name="occupation" id="occ4" value="Other"><label class="radio-label" for="occ4">Other</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Course Selection -->
+    <div class="form-card">
+      <div class="section-title">Choose Your Pathway</div>
+      <div class="course-grid">
+
+        <input class="course-option" type="radio" name="course" id="c1" value="Track A — Junior Robotics">
+        <label class="course-label" for="c1">
+          <div class="course-icon">🤖</div>
+          <div class="course-info">
+            <div class="course-name">Junior Robotics</div>
+            <div class="course-age">Recommended: Age 10–16 · Class 5 to 10</div>
+            <div class="course-desc">Introduction to robotics concepts, basic electronics, Arduino fundamentals, building simple bots, STEM project challenges</div>
+          </div>
+          <div class="course-tag">Track A</div>
+        </label>
+
+        <input class="course-option" type="radio" name="course" id="c2" value="Track B — Senior Robotics & AI">
+        <label class="course-label" for="c2">
+          <div class="course-icon">⚙️</div>
+          <div class="course-info">
+            <div class="course-name">Senior Robotics & AI</div>
+            <div class="course-age">Recommended: Age 16–22 · Class 11 to Graduation</div>
+            <div class="course-desc">Advanced robotics, Arduino & Raspberry Pi, IoT integration, Computer Vision, AI-powered automation, drone fundamentals</div>
+          </div>
+          <div class="course-tag">Track B</div>
+        </label>
+
+        <input class="radio-option" type="radio" name="course" id="c3" value="Track C — AI for Professionals" style="display:none">
+        <label class="course-label" for="c3" style="display:flex">
+          <div class="course-icon">💼</div>
+          <div class="course-info">
+            <div class="course-name">AI for Professionals</div>
+            <div class="course-age">Recommended: Working Professionals & Business Owners</div>
+            <div class="course-desc">Business automation with AI, n8n workflows, prompt engineering, AI tools for productivity, no-code/low-code implementation</div>
+          </div>
+          <div class="course-tag">Track C</div>
+        </label>
+
+      </div>
+
+      <div class="form-grid" style="margin-top:22px;">
+        <div class="field">
+          <label>How did you hear about us?</label>
+          <select name="source">
+            <option value="" disabled selected>Select source</option>
+            <option>Social Media (Facebook / Instagram)</option>
+            <option>Friend / Family Referral</option>
+            <option>School / College</option>
+            <option>Newspaper / Poster / Banner</option>
+            <option>YouTube</option>
+            <option>Walk-in</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Why do you want to join? (Optional)</label>
+          <textarea name="motivation" placeholder="Tell us your goal or what excites you about this field..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-wrap">
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span class="btn-text">Submit Application</span>
+        <svg class="btn-arrow" width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="spinner"></div>
+      </button>
+      <div class="error-banner" id="errorBanner">
+        ⚠️ Submission failed. Please check your internet connection and try again.
+      </div>
+      <p class="footer-note">Your information is kept confidential and used only for enrollment purposes.<br>Our team will contact you within 24 hours of submission.</p>
+    </div>
+
+  </form>
+</div>
+
+<!-- Success overlay -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-icon">✓</div>
+  <h2>Application <span>Received!</span></h2>
+  <p>Thank you for enrolling with Aerobotix Edtech Institute. Our team will reach out to you within 24 hours to confirm your seat and share next steps.</p>
+  <button class="btn-back" onclick="resetForm()">Submit Another Response</button>
+</div>
+
+<script>
+  // ============================================================
+  // STEP 1: Paste your Google Apps Script Web App URL below
+  // ============================================================
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby4SoiXPIQNZlZ5g9fIl3OT3_aqWg_D0RRiNF7HTG6Oiw0VMEe8xf7-Cm_eBdpLKe72/exec";
+  // ============================================================
+
+  function resetForm() {
+    document.getElementById('successOverlay').classList.remove('show');
+    document.getElementById('enrollForm').reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('enrollForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Validate required fields
+    const required = this.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      el.style.borderColor = '';
+      if (!el.value.trim()) {
+        el.style.borderColor = '#e84a4a';
+        valid = false;
+      }
+    });
+
+    if (!this.querySelector('input[name="course"]:checked')) {
+      document.querySelectorAll('.course-label').forEach(l => l.style.borderColor = '#e84a4a');
+      valid = false;
+    } else {
+      document.querySelectorAll('.course-label').forEach(l => l.style.borderColor = '');
+    }
+
+    if (!valid) {
+      this.querySelector('[style*="e84a4a"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Collect form data
+    const fd = new FormData(this);
+    const payload = {
+      timestamp:      new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      fullName:       fd.get('fullName'),
+      dob:            fd.get('dob'),
+      gender:         fd.get('gender'),
+      nationality:    fd.get('nationality'),
+      address:        fd.get('address'),
+      phone:          fd.get('phone'),
+      whatsapp:       fd.get('whatsapp') || fd.get('phone'),
+      email:          fd.get('email'),
+      guardianName:   fd.get('guardianName'),
+      guardianPhone:  fd.get('guardianPhone'),
+      qualification:  fd.get('qualification'),
+      stream:         fd.get('stream'),
+      institution:    fd.get('institution'),
+      yearPassing:    fd.get('yearPassing'),
+      occupation:     fd.get('occupation'),
+      course:         fd.get('course'),
+      source:         fd.get('source'),
+      motivation:     fd.get('motivation')
+    };
+
+    // UI: loading state
+    const btn = document.getElementById('submitBtn');
+    const errBanner = document.getElementById('errorBanner');
+    btn.classList.add('loading');
+    btn.disabled = true;
+    errBanner.classList.remove('show');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      // no-cors means we can't read the response, but if no error thrown = success
+      document.getElementById('successOverlay').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      errBanner.classList.add('show');
+    } finally {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<html class="dark" lang="en" style="scroll-behavior: smooth;"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aerobotix Edtech Institute | Architecting the Agentic Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --deep-black: #050505;
+            --cyan-glow: #00f2ff;
+            --purple-glow: #7701d0;
+            --light-blue: #a5f3fc;
+        }
+        body {
+            background-color: var(--deep-black);
+            color: #e5e2e1;
+            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        .noise-texture {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        .neural-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(119, 1, 208, 0.05) 0%, transparent 40%);
+        }
+        .neural-lines {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 70%);
+        }
+
+        @keyframes float-complex {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(-5deg); }
+            50% { transform: translateY(-30px) rotateX(-5deg) rotateY(5deg); }
+        }
+        @keyframes rotate-ring {
+            from { transform: rotate(0deg) scale(1); }
+            to { transform: rotate(360deg) scale(1.05); }
+        }
+        @keyframes pulse-inner {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 0.9; transform: scale(1.1); }
+        }
+        
+        .mascot-container {
+            perspective: 1000px;
+            animation: float-complex 8s ease-in-out infinite;
+            will-change: transform;
+        }
+        .holographic-ring {
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 50%;
+            position: absolute;
+            animation: rotate-ring 15s linear infinite;
+            will-change: transform;
+        }
+
+        .glass-panel {
+            background: rgba(15, 15, 15, 0.4);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 255, 0.3);
+            background: rgba(20, 20, 20, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 255, 0.05);
+        }
+        .card-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        .glass-panel:hover .card-core {
+            opacity: 0.1;
+            animation: pulse-inner 3s ease-in-out infinite;
+        }
+
+        .hero-gradient-text { background: linear-gradient(135deg, #fff 0%, #00f2ff 50%, #7701d0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; } 
+        .neon-glow { box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); transition: all 0.3s ease; } 
+        .neon-glow:hover { box-shadow: 0 0 30px rgba(0, 242, 255, 0.6); } 
+        
+        .hologram-stroke { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw-hologram 4s ease-out forwards infinite alternate; } 
+        @keyframes draw-hologram { 0% { stroke-dashoffset: 400; opacity: 0.5; } 50% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } } 
+        .glow-filter { filter: drop-shadow(0 0 8px var(--cyan-glow)) drop-shadow(0 0 15px var(--light-blue)); } 
+        
+        @keyframes industrialEntry { 
+            0% { transform: translateX(-150vw); opacity: 0; } 
+            28% { transform: translateX(-5px); opacity: 1; } 
+            58% { transform: translateX(-5px); opacity: 1; } 
+            100% { transform: translateX(-150vw); opacity: 0; } 
+        } 
+        @keyframes whiteEntry { 
+            0% { transform: translateX(150vw); opacity: 0; } 
+            28% { transform: translateX(5px); opacity: 1; } 
+            58% { transform: translateX(5px); opacity: 1; } 
+            100% { transform: translateX(150vw); opacity: 0; } 
+        } 
+        @keyframes synergyPulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; filter: blur(30px); }
+            50% { transform: scale(1.5); opacity: 0.6; filter: blur(50px); }
+        }
+        .synergy-glow {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--cyan-glow) 0%, var(--purple-glow) 60%, transparent 100%);
+            z-index: 5;
+            animation: synergyPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .industrial-hand-realistic { 
+            animation: industrialEntry 6.5s cubic-bezier(0.23, 1, 0.32, 1) infinite; 
+        } 
+        .white-hand-realistic { 
+            animation: whiteEntry 6.5s cubic-bezier(0.23, 1, 0.32, 1) infinite; 
+        } 
+        .handshake-core-head {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 12;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .handshake-core-head svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.95;
+        }
+        
+        .partnership-logo { animation: logoFadeIn 4s ease-out forwards; } 
+        @keyframes logoFadeIn { 0%, 50% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        .about-wrapper { padding: 80px 24px; position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; color: var(--cyan-glow); margin-bottom: 24px; text-align: center; }
+        .about-heading { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; md:font-size: 3.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 32px; text-align: center; letter-spacing: -0.04em; }
+        .highlight-blue { color: var(--light-blue); }
+        .highlight-cyan { color: var(--cyan-glow); }
+        .about-subtext { color: rgba(255,255,255,0.6); font-size: 1.125rem; text-align: center; max-width: 800px; margin: 0 auto 64px; line-height: 1.6; }
+        .partner-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 48px; margin-bottom: 48px; backdrop-filter: blur(10px); }
+        .partner-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .partner-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #ff4d4d; }
+        .partner-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+        .partner-location { font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
+        .partner-description { color: rgba(255,255,255,0.7); margin-bottom: 32px; line-height: 1.6; }
+        .credentials-grid { display: grid; grid-template-cols: 1fr; md:grid-template-cols: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+        .credential-chip { background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid rgba(255,255,255,0.05); }
+        .credential-icon { font-size: 1.25rem; flex-shrink: 0; }
+        .credential-text { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.4; }
+        .credential-text strong { color: white; }
+        .ifr-link { display: inline-flex; align-items: center; gap: 8px; color: var(--cyan-glow); font-size: 0.875rem; font-weight: 600; transition: opacity 0.3s; }
+        .ifr-link:hover { opacity: 0.8; }
+        .connector { display: flex; justify-content: center; margin: -24px 0; position: relative; z-index: 2; }
+        .connector-line { width: 2px; height: 64px; background: linear-gradient(to bottom, #ff4d4d, var(--cyan-glow)); position: relative; }
+        .connector-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: white; box-shadow: 0 0 15px white; }
+        .aerobotix-block { background: rgba(0, 242, 255, 0.03); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; padding: 48px; backdrop-filter: blur(10px); }
+        .aero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--cyan-glow); margin-bottom: 16px; }
+        .aero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan-glow); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
+        .aero-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+        .aero-name .cyan { color: var(--cyan-glow); }
+        .aero-tagline { font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+        .aero-intro { color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 40px; }
+        .aero-intro strong { color: var(--cyan-glow); }
+        .diff-heading { font-size: 1.125rem; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .diff-grid { display: grid; grid-template-cols: 1fr; md:grid-template-cols: 1fr 1fr; gap: 24px; }
+        .diff-card { display: flex; flex-direction: column; gap: 12px; }
+        .diff-card-icon { font-size: 1.5rem; }
+        .diff-card-title { font-weight: 700; font-size: 1rem; color: white; }
+        .diff-card-text { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+        .visual-showcase {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+            gap: 24px;
+            max-width: 1180px;
+            margin: 0 auto 56px;
+            align-items: stretch;
+        }
+        .visual-stack {
+            display: grid;
+            gap: 24px;
+        }
+        .visual-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        }
+        .visual-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(5,5,5,0.18));
+            pointer-events: none;
+        }
+        .visual-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .visual-card-hero {
+            min-height: 460px;
+        }
+        .visual-card-small {
+            min-height: 218px;
+        }
+        .visual-badge {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(5, 5, 5, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            color: rgba(255, 255, 255, 0.82);
+        }
+        .visual-badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--cyan-glow);
+            box-shadow: 0 0 16px rgba(0, 242, 255, 0.75);
+        }
+
+        @media (max-width: 768px) {
+            .about-heading { font-size: 2.5rem; }
+            .partner-block, .aerobotix-block { padding: 24px; }
+            .credentials-grid, .diff-grid { grid-template-cols: 1fr; }
+            .visual-showcase { grid-template-columns: 1fr; margin-bottom: 40px; }
+            .visual-card-hero { min-height: 320px; }
+            .visual-card-small { min-height: 220px; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "background": "#050505",
+                "primary": "#e1fdff",
+                "primary-container": "#00f2ff",
+                "secondary": "#dcb8ff",
+                "secondary-container": "#7701d0",
+                "surface": "#0e0e0e",
+                "outline": "#849495",
+                "on-surface": "#e5e2e1",
+              },
+              borderRadius: {
+                "DEFAULT": "4px",
+                "xl": "12px",
+                "2xl": "16px",
+                "3xl": "24px"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+              }
+            },
+          }
+        }
+    </script>
+</head><body class="selection:bg-primary-container selection:text-black">
+<div class="noise-texture"></div>
+<div class="neural-bg">
+<div class="neural-lines"></div>
+</div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                Aerobotix
+            </div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="text-white/60 hover:text-white transition-colors text-sm font-medium tracking-tight uppercase" href="#pathways">Pathways</a>
+<a class="text-white/60 hover:text-white transition-colors text-sm font-medium tracking-tight uppercase" href="#journey">Journey</a>
+<a class="text-white/60 hover:text-white transition-colors text-sm font-medium tracking-tight uppercase" href="#features">Features</a>
+<a class="text-white/60 hover:text-white transition-colors text-sm font-medium tracking-tight uppercase" href="#about">About</a>
+</div>
+<div class="flex gap-4 md:gap-6 items-center">
+<a href="aerobotix_enrollment_form.html" class="bg-white text-black px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-primary-container transition-all inline-block">Enroll Now</a>
+</div>
+</div>
+</nav>
+<main class="relative z-10 pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+<div class="mascot-container relative w-[300px] md:w-[600px] h-[300px] md:h-[600px] flex items-center justify-center">
+<div class="holographic-ring w-full h-full opacity-30"></div>
+<div class="holographic-ring w-4/5 h-4/5 opacity-50" style="animation-direction: reverse; animation-duration: 20s;"></div>
+<div class="holographic-ring w-3/5 h-3/5 opacity-20" style="animation-duration: 25s;"></div>
+<!-- Distinct Robot Head Hologram -->
+<div class="relative z-10 glow-filter">
+<svg class="w-64 h-64 md:w-96 md:h-96" viewbox="0 0 200 200">
+<defs>
+<lineargradient id="glowGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#fff" stop-opacity="1"></stop>
+<stop offset="50%" stop-color="#00f2ff" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#7701d0" stop-opacity="0.8"></stop>
+</lineargradient>
+<filter id="blurLight">
+<fegaussianblur in="SourceGraphic" stddeviation="3"></fegaussianblur>
+</filter>
+</defs>
+<path class="hologram-stroke" d="M40 80 Q100 30 160 80 L160 130 Q100 180 40 130 Z" fill="none" stroke="url(#glowGrad)" stroke-opacity="0.8" stroke-width="2"></path>
+<rect fill="#00f2ff" fill-opacity="0.15" height="45" rx="20" stroke="#fff" stroke-opacity="0.8" stroke-width="1" width="85" x="57.5" y="77.5"></rect>
+<rect class="hologram-stroke" fill="none" height="45" rx="20" stroke="#00f2ff" stroke-opacity="0.8" stroke-width="2.5" width="85" x="57.5" y="77.5"></rect>
+<g>
+<circle cx="85" cy="100" fill="#fff" filter="url(#blurLight)" r="4"></circle>
+<circle cx="85" cy="100" fill="var(--cyan-glow)" r="3.5">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="2.5;4.5;2.5"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.7;1;0.7"></animate>
+</circle>
+<circle cx="115" cy="100" fill="#fff" filter="url(#blurLight)" r="4"></circle>
+<circle cx="115" cy="100" fill="var(--cyan-glow)" r="3.5">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="2.5;4.5;2.5"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.7;1;0.7"></animate>
+</circle>
+</g>
+<path d="M70 140 L130 140" opacity="0.6" stroke="#fff" stroke-dasharray="2 2" stroke-width="1"></path>
+<circle cx="100" cy="140" fill="#fff" r="2">
+<animate attributename="cx" dur="3s" repeatcount="indefinite" values="70;130;70"></animate>
+</circle>
+</svg>
+</div>
+</div>
+</div>
+<div class="relative z-20 max-w-6xl mx-auto">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-10 border-white/5">
+<span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container">Indiafirst Robotics Franchise</span>
+<span class="w-1 h-1 rounded-full bg-white/20"></span>
+<span class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/40">Dibrugarh, Assam</span>
+</div>
+<h1 class="text-5xl md:text-[110px] font-headline font-bold leading-[1] md:leading-[0.9] tracking-tighter hero-gradient-text mb-8">
+                    Learn Robotics,<br/>Drones &amp; AI
+                </h1>
+<p class="text-white/50 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-16 px-4">
+                    Real courses. Real projects. Real certificates. Architecting the agentic future for students and professionals.
+                </p>
+<div class="visual-showcase relative z-20 px-4 md:px-6">
+<div class="visual-card visual-card-hero glass-panel">
+<img alt="Futuristic educational robot and drone with AI holograms" src="assets/generated/hero-robot-drone-ai.png"/>
+<div class="visual-badge">Robotics + Drones + AI</div>
+</div>
+<div class="visual-stack">
+<div class="visual-card visual-card-small glass-panel">
+<img alt="Advanced drone with AI navigation overlays" src="assets/generated/drone-navigation.png"/>
+<div class="visual-badge">Autonomous Flight</div>
+</div>
+<div class="visual-card visual-card-small glass-panel">
+<img alt="AI robotics workstation with holographic intelligence displays" src="assets/generated/ai-workstation.png"/>
+<div class="visual-badge">Intelligent Systems</div>
+</div>
+</div>
+</div>
+<!-- Cinematic Dynamic Handshake Animation -->
+<div class="relative w-full max-w-5xl mx-auto py-16 mb-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 px-6">
+<!-- Aerobotix Side -->
+<div class="flex-1 flex flex-col items-center md:items-end text-center md:text-right order-2 md:order-1 relative z-20">
+<div class="partnership-logo mb-4 h-16 md:h-24 w-auto">
+<img alt="Aerobotix Logo" class="h-full object-contain filter brightness-110" src="https://lh3.googleusercontent.com/aida/ADBb0ugHq287rYRA64PhBKn79bN0fxVmB-xnBDZVaVq_rfyEFZ9qxwGMv1k7TxEZERKB3CjvZskKmWv_DvN9FRuctDpessuHDPcOz1msaAA_pEeWKMannbxrVQPPz8cVlLB-5rkBx1LLxNTW4p2rn1maXdE0b3dLlnDBXt1on33po4NfqgeeTPRm-ZEd3VygBXg0B2Krq3PBInQxAd2hzk8vbdMv5SKUtqn1KbaPXmqy6CXwPpMFHz96BcRwZCpSOO6Ze0UwsdRDPvLshA"/>
+</div>
+<span class="text-[10px] md:text-[11px] font-bold tracking-[0.4em] uppercase text-white/30 block mb-1">Collaborative Power</span>
+<h4 class="text-white font-bold text-lg md:text-2xl tracking-tight">Aerobotix Edtech Institute</h4>
+</div>
+<!-- Dynamic Handshake Core -->
+<div class="relative flex items-center justify-center w-full md:w-[500px] h-[350px] order-1 md:order-2 overflow-hidden"><div class="synergy-glow"></div>
+<div class="absolute inset-0 bg-primary-container/5 blur-[100px] rounded-full"></div>
+<div class="handshake-core-head glow-filter">
+<svg viewbox="0 0 200 200">
+<path class="hologram-stroke" d="M40 80 Q100 30 160 80 L160 130 Q100 180 40 130 Z" fill="none" stroke="url(#glowGrad)" stroke-opacity="0.8" stroke-width="2"></path>
+<rect fill="#00f2ff" fill-opacity="0.15" height="45" rx="20" stroke="#fff" stroke-opacity="0.8" stroke-width="1" width="85" x="57.5" y="77.5"></rect>
+<rect class="hologram-stroke" fill="none" height="45" rx="20" stroke="#00f2ff" stroke-opacity="0.8" stroke-width="2.5" width="85" x="57.5" y="77.5"></rect>
+<g>
+<circle cx="85" cy="100" fill="#fff" filter="url(#blurLight)" r="4"></circle>
+<circle cx="85" cy="100" fill="var(--cyan-glow)" r="3.5">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="2.5;4.5;2.5"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.7;1;0.7"></animate>
+</circle>
+<circle cx="115" cy="100" fill="#fff" filter="url(#blurLight)" r="4"></circle>
+<circle cx="115" cy="100" fill="var(--cyan-glow)" r="3.5">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="2.5;4.5;2.5"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.7;1;0.7"></animate>
+</circle>
+</g>
+<path d="M70 140 L130 140" opacity="0.6" stroke="#fff" stroke-dasharray="2 2" stroke-width="1"></path>
+<circle cx="100" cy="140" fill="#fff" r="2">
+<animate attributename="cx" dur="3s" repeatcount="indefinite" values="70;130;70"></animate>
+</circle>
+</svg>
+</div>
+<!-- Industrial Hand (Left) -->
+<div class="industrial-hand-realistic absolute left-[-150px] md:left-[-100px] z-10 w-64 md:w-80 h-64 md:h-80">
+<img alt="Industrial Robotic Hand" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhyu8Ee41XSDHbzxbI2X1gSlEgjZliIcNVK_7PFLhlLl25KKE84d7zLinmF-24DKcuS4vxnq4tYGsQ7pWwFYWIhosEubL99ugjfJWe-Y5Z-AyrGR8YM5jtIJek5jiMqr5s_gGRReFtVC-Kt5T0EIFM_LC_WqeOYCCU8COKJ7w3OiauX4LaRbA8-CesF1ptVYvM8KY7kfEgOrrDAk1B1t13BwDqK1E9hnCn5FvvZkO1o--Z-HpgOn3VKkZk"/>
+</div>
+<!-- White Hand (Right) -->
+<div class="white-hand-realistic absolute right-[-150px] md:right-[-100px] z-10 w-64 md:w-80 h-64 md:h-80">
+<img alt="White Robotic Hand" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiSXeXpVqSUToCEQx53kiFG6KjeCL5kIjS602-1bq8xXUNUZEfToV6BpZPgAAVgJanT3cfYieF5nf_t5k06M1RvFpvUI8E0xk6XkvIigwH4a76pUucwD6sK4_Gj-n7FbMx9T8E4O6pl-VSnQZYeV94I7DwyZvJ86zPhMBr-g4TmimKForDPtWiTCyCoEK8L4mT5mncjW38paU1XmIMTZQZ5QgNyxJZ8ro5GCv0dS2Evq4HN8Pcb97t3X7Q"/>
+</div>
+</div>
+<!-- IFR Side -->
+<div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left order-3 relative z-20">
+<div class="partnership-logo mb-4 h-16 md:h-24 w-auto flex items-center">
+<img alt="Indiafirst Robotics Logo" class="h-12 md:h-16 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujnLGyBskZUHJGxp239X19gpY-H0xR6lqjmFt2py2ZA3c-5n02bEsR7wA9tIgGLHres71ub3EbyY3veYXNN1XaEd1II6ofY-mP6n-ogP0aibWlNdyv5N4-7rpEYxNd6D2GQ4bADRdMQtJ8uNBxapUAEGXHzO_7w3XCtBrzS0KBpdb2e_oTEVyXsJLIezbZ6AwgI_IBmq1HSkkB3LsU3uyQGbD7JCI4g8FXXekYKsz1hcqp5zgLcaQ-v8FzXVUpuO2rVSNfRcBc9wQ"/>
+</div>
+<span class="text-[10px] md:text-[11px] font-bold tracking-[0.4em] uppercase text-primary-container block mb-1">Authorized Hub</span>
+<h4 class="text-white font-bold text-lg md:text-2xl tracking-tight">Indiafirst Robotics</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us Section -->
+<section id="about" class="about-wrapper">
+<div class="container">
+<div class="section-label">About Us</div>
+<h2 class="about-heading">
+      Built on <span class="highlight-blue">India's strongest</span> robotics foundation.<br/>
+      Powered by <span class="highlight-cyan">deep AI</span> integration.
+    </h2>
+<p class="about-subtext">
+      Aerobotix Edtech Institute is Dibrugarh's first integrated Robotics, Drone, and AI education centre — a franchise partner of India First Robotics (IFR), Pune, enhanced with a specialised artificial intelligence layer that bridges the gap between machines that move and machines that think.
+    </p>
+<!-- ===== IFR BLOCK ===== -->
+<div class="partner-block">
+<div class="partner-badge">
+<span class="dot"></span>
+        Our Foundation Partner
+      </div>
+<h3 class="partner-name">India First Robotics (IFR)</h3>
+<p class="partner-location">Headquartered in Pune, Maharashtra</p>
+<p class="partner-description">
+        India First Robotics is one of the country's most established robotics education and R&amp;D companies. With deep institutional partnerships, government collaborations, and corporate-grade project delivery, IFR provides the <strong>proven curriculum, professional hardware kits, and industry credibility</strong> that form the backbone of every Aerobotix programme.
+      </p>
+<div class="credentials-grid">
+<div class="credential-chip">
+<div class="credential-icon museum">🏛</div>
+<div class="credential-text">Built <strong>India's first Robotics Museum</strong> for the State Government of Gujarat</div>
+</div>
+<div class="credential-chip">
+<div class="credential-icon mil">⚔</div>
+<div class="credential-text">Conducted India's <strong>first Military Robotics Event</strong> with the College of Military Engineering &amp; Army Design Bureau</div>
+</div>
+<div class="credential-chip">
+<div class="credential-icon univ">🎓</div>
+<div class="credential-text"><strong>MOU with University of Pune</strong> for joint Robotics &amp; AI certification — plus partnerships with IIT Bombay, IIT Kharagpur, IIT Guwahati &amp; more</div>
+</div>
+<div class="credential-chip">
+<div class="credential-icon corp">🏢</div>
+<div class="credential-text">Corporate clients include <strong>Fujitsu, TCS, John Deere, PTC, PUBMATIC</strong> and NRB Bearings Ltd</div>
+</div>
+</div>
+<a class="ifr-link" href="https://www.indiafirstrobotics.com/index.php" rel="noopener noreferrer" target="_blank">
+        Visit India First Robotics
+        <svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8.5h8.5M8 5l3.5 3.5L8 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</a>
+</div>
+<!-- ===== AEROBOTIX BLOCK ===== -->
+<div class="aerobotix-block">
+<div class="aero-badge">
+        What We Add
+      </div>
+<h3 class="aero-name">Aerobotix <span class="cyan">Edtech Institute</span></h3>
+<p class="aero-tagline">"Where Theory Meets Practicality" — First Mover in Dibrugarh District</p>
+<p class="aero-intro">
+        While IFR provides the world-class robotics and drone foundation, Aerobotix layers <strong>deep artificial intelligence</strong> across every programme — creating what almost no other institute in India offers: a fully integrated <strong>Robotics + Drones + AI</strong> learning experience. We don't just teach students to build machines. We teach them to build machines that <strong>think, learn, and adapt</strong>.
+      </p>
+<div id="features" class="diff-heading">What Makes Aerobotix Special</div>
+<div class="diff-grid">
+<div class="diff-card">
+<span class="diff-card-icon">🧠</span>
+<div class="diff-card-title">Deep AI Integration Layer</div>
+<div class="diff-card-text">We go beyond standard robotics. Our curriculum weaves AI and ML through every module — from basics to multi-agent AI systems — bridging the gap between a moving machine and a smart machine.</div>
+</div>
+<div class="diff-card">
+<span class="diff-card-icon">🔧</span>
+<div class="diff-card-title">Logic-First, Not Syntax-First</div>
+<div class="diff-card-text">We build logical and critical thinking ability. Solutions start on plain paper before code. Technology changes, but the logical approach remains forever. We celebrate innovation — not marks.</div>
+</div>
+<div class="diff-card">
+<span class="diff-card-icon">🏪</span>
+<div class="diff-card-title">Market-First Projects</div>
+<div class="diff-card-text">Students visit local businesses, identify real automation problems, and build working solutions. Every topic is project-based — connecting classroom learning to the world outside.</div>
+</div>
+<div class="diff-card">
+<span class="diff-card-icon">🔄</span>
+<div class="diff-card-title">Always-Current Curriculum</div>
+<div class="diff-card-text">AI evolves weekly. Our syllabus is updated regularly to stay current with the latest developments — students always learn what's relevant today, not yesterday's technology.</div>
+</div>
+<div class="diff-card">
+<span class="diff-card-icon">🚀</span>
+<div class="diff-card-title">R&amp;D Pipeline to Pune</div>
+<div class="diff-card-text">Brilliant student prototypes don't stop at the classroom. Through IFR's R&amp;D facility in Pune, promising ideas can be developed into real, professional-grade products.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pathways Section -->
+<section id="pathways" class="py-32 px-6 md:px-8 max-w-[1440px] mx-auto relative">
+<div class="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-l-2 border-primary-container pl-8">
+<div class="max-w-2xl">
+<h2 class="text-4xl md:text-6xl font-headline font-bold tracking-tighter mb-6">Choose Your<br/>Neural Pathway</h2>
+<p class="text-white/40 text-base md:text-lg">Curated 3-4 week modules designed for continuous growth and monthly certification.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<!-- Track A -->
+<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0 relative">
+<div class="card-core"></div>
+<div class="text-4xl mb-6">🤖</div>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary-container mb-2 block truncate">Class 4-6</span>
+<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-primary-container transition-colors line-clamp-2">Junior Robotics (Track A)</h3>
+<p class="text-sm text-white/40 mb-8 leading-relaxed line-clamp-3">Learn about gears, Build real robots from scratch-Robochamp, Basic of AI.</p>
+<div class="flex flex-wrap gap-2 mb-10">
+<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">🔧 Play with gears</span>
+<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">🧠 How AI Thinks</span>
+<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">🏆Robochamp</span>
+</div>
+<div class="mt-auto space-y-6">
+<div class="flex justify-between items-baseline border-t border-white/10 pt-6 gap-2">
+<span class="text-[10px] font-bold tracking-widest text-white/30 uppercase flex-shrink-0">Monthly</span>
+<span class="text-xl font-bold truncate">₹800</span>
+</div>
+<a href="track-a.html" class="w-full py-4 rounded-xl border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all inline-block text-center">Select Pathway</a>
+</div>
+</div>
+<!-- Track B - Featured -->
+<div class="relative p-8 md:p-10 rounded-3xl flex flex-col h-full bg-gradient-to-b from-secondary-container/30 to-background border border-secondary-container/50 shadow-[0_0_60px_rgba(119,1,208,0.15)] group overflow-hidden glass-panel min-w-0">
+<div class="card-core"></div>
+<div class="absolute top-0 right-0 p-4">
+<span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full whitespace-nowrap">Featured</span>
+</div>
+<div class="text-4xl mb-6">🚁</div>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-secondary mb-2 block truncate">Class 7-12</span>
+<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-secondary transition-colors line-clamp-2">Senior Robotics &amp; AI (Track B)</h3>
+<p class="text-sm text-white/60 mb-8 leading-relaxed line-clamp-3">The flagship 15-month journey. From Arduino and Python to flying autonomous AI drones.</p>
+<div class="flex flex-wrap gap-2 mb-10">
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">⚡ Scratch</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">🤖 ML</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">🔌 Arduino</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">🚁 Drones</span>
+</div>
+<div class="mt-auto space-y-6">
+<div class="flex justify-between items-baseline border-t border-white/10 pt-6 gap-2">
+<span class="text-[10px] font-bold tracking-widest text-white/30 uppercase flex-shrink-0">Monthly</span>
+<span class="text-xl font-bold text-secondary truncate">₹950</span>
+</div>
+<a href="track-b.html" class="w-full py-4 rounded-xl bg-secondary-container text-white text-[10px] font-bold uppercase tracking-widest neon-glow inline-block text-center">Start Journey</a>
+</div>
+</div>
+<!-- AI for Professionals -->
+<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0">
+<div class="card-core"></div>
+<div class="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition-opacity">💼</div>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary-container mb-2 block truncate">Professional</span>
+<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-primary-container transition-colors line-clamp-2">AI for Professionals</h3>
+<p class="text-sm text-white/40 mb-8 leading-relaxed line-clamp-3">Master AI tools, automate your work, build mobile apps without coding, and create your own AI assistant.</p>
+<div class="flex flex-wrap gap-2 mb-10">
+<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">💬 Claude Code</span>
+<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">📱 App Building</span>
+<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">🔗 AI Agents</span>
+</div>
+<div class="mt-auto space-y-6">
+<div class="flex justify-between items-baseline border-t border-white/10 pt-6 gap-2">
+<span class="text-[10px] font-bold tracking-widest text-white/30 uppercase flex-shrink-0">Monthly</span>
+<span class="text-xl font-bold truncate">₹499</span>
+</div>
+<a href="professionals.html" class="w-full py-4 rounded-xl border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all inline-block text-center">Select Pathway</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section id="journey" class="py-32 px-6 md:px-8 relative overflow-hidden">
+<div class="max-w-6xl mx-auto glass-panel rounded-[48px] p-10 md:p-24 relative text-center border-white/10 shadow-[0_0_100px_rgba(0,242,255,0.1)]">
+<div class="card-core" style="width: 1000px; height: 1000px; opacity: 0.4;"></div>
+<h2 class="text-4xl md:text-7xl font-headline font-bold mb-8 tracking-tighter">Architect Your Future.</h2>
+<p class="text-white/50 max-w-2xl mx-auto mb-16 text-lg md:text-xl font-light">
+                    Join Aerobotix Edtech Institute — Dibrugarh's first dedicated hub for Robotics, Drones &amp; Artificial Intelligence.
+                </p>
+<div class="flex flex-col md:flex-row justify-center gap-6 items-center relative z-10 mb-20">
+<a href="aerobotix_enrollment_form.html" class="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary-container transition-all w-full md:w-auto neon-glow inline-block text-center">
+                        Enroll Now — Trial Class
+                    </a>
+<a href="https://wa.me/919957952907?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Aerobotix%20courses." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all w-full md:w-auto inline-block text-center">
+                        Talk to Counsellor
+                    </a>
+</div>
+<!-- Footer Info -->
+<div class="pt-16 border-t border-white/5 grid grid-cols-1 md:grid-cols-2 gap-10 text-left relative z-10 px-4">
+<div class="flex items-start gap-5">
+<div class="p-3 rounded-2xl glass-panel flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary-container text-2xl">location</span>
+</div>
+<div>
+<p class="text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase mb-2">Our Campus</p>
+<p class="text-white font-medium text-sm md:text-base leading-relaxed">AT Road, Amolapatty,<br/>Dibrugarh, Assam</p>
+</div>
+</div>
+<div class="flex items-start gap-5">
+<div class="p-3 rounded-2xl glass-panel flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-2xl">schedule</span>
+</div>
+<div>
+<p class="text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase mb-2">Batch Timings</p>
+<p class="text-white font-medium text-sm md:text-base leading-relaxed">Weekdays (4 PM - 7 PM) |<br/>Weekends (10 AM - 2 PM)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 bg-[#050505] border-t border-white/5 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-center px-10 max-w-7xl mx-auto gap-12">
+<div class="flex flex-col items-center md:items-start gap-6">
+<div class="text-2xl font-bold tracking-tighter text-white">Aerobotix</div>
+<p class="text-white/30 text-[10px] font-bold uppercase tracking-[0.2em] leading-loose text-center md:text-left">© 2026 Aerobotix Edtech Institute. <br/> Architecting the Agentic Future.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-10">
+<a class="text-white/30 hover:text-white transition-colors text-[9px] font-bold uppercase tracking-widest" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>
