@@ -11,6 +11,7 @@
             --cyan-glow: #00f2ff;
             --purple-glow: #7701d0;
             --light-blue: #a5f3fc;
+            --vh: 1vh;
         }
         body {
             background-color: var(--deep-black);
@@ -18,6 +19,8 @@
             overflow-x: hidden;
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.02em;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
         .noise-texture {
             position: fixed;
@@ -273,6 +276,116 @@
             background: var(--cyan-glow);
             box-shadow: 0 0 16px rgba(0, 242, 255, 0.75);
         }
+        body[data-device="tablet"] .hero-section {
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+        }
+        body[data-device="tablet"] .hero-title {
+            font-size: clamp(3.75rem, 10vw, 5.75rem);
+            line-height: 0.94;
+        }
+        body[data-device="tablet"] .hero-copy {
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+        }
+        body[data-device="tablet"] .visual-showcase {
+            grid-template-columns: 1fr;
+            max-width: 760px;
+        }
+        body[data-device="tablet"] .visual-card-hero {
+            min-height: 380px;
+        }
+        body[data-device="tablet"] .hero-handshake {
+            padding-top: 2rem;
+            gap: 1.5rem;
+        }
+        body[data-device="tablet"] .hero-handshake-core {
+            height: 300px;
+        }
+        body[data-device="mobile"] .hero-section {
+            min-height: calc(var(--vh) * 100);
+            padding-top: 5.5rem;
+            padding-bottom: 3rem;
+        }
+        body[data-device="mobile"] .hero-content {
+            max-width: 100%;
+            padding-inline: 0.25rem;
+        }
+        body[data-device="mobile"] .hero-kicker {
+            margin-bottom: 1.75rem;
+            padding: 0.8rem 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        body[data-device="mobile"] .hero-title {
+            font-size: clamp(2.9rem, 15vw, 4.4rem);
+            line-height: 0.98;
+            margin-bottom: 1.5rem;
+        }
+        body[data-device="mobile"] .hero-copy {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 32rem;
+        }
+        body[data-device="mobile"] .hero-handshake {
+            padding: 1.5rem 0 0;
+            gap: 1.25rem;
+        }
+        body[data-device="mobile"] .hero-handshake-core {
+            height: 260px;
+        }
+        body[data-device="mobile"] .handshake-core-head {
+            width: 110px;
+            height: 110px;
+        }
+        body[data-device="mobile"] .industrial-hand-realistic {
+            left: -115px;
+            width: 13rem;
+            height: 13rem;
+        }
+        body[data-device="mobile"] .white-hand-realistic {
+            right: -115px;
+            width: 13rem;
+            height: 13rem;
+        }
+        body[data-device="mobile"] .visual-showcase {
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-inline: 0;
+        }
+        body[data-device="mobile"] .visual-card-hero {
+            min-height: 260px;
+        }
+        body[data-device="mobile"] .visual-card-small {
+            min-height: 180px;
+        }
+        body[data-device="mobile"] .visual-badge {
+            left: 14px;
+            bottom: 14px;
+            padding: 8px 12px;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+        }
+        body[data-device="mobile"] .about-wrapper {
+            padding: 56px 16px 0;
+        }
+        body[data-device="mobile"] .partner-block,
+        body[data-device="mobile"] .aerobotix-block {
+            padding: 20px;
+        }
+        body[data-device="mobile"] .credentials-grid,
+        body[data-device="mobile"] .diff-grid {
+            grid-template-columns: 1fr;
+        }
+        body[data-device="mobile"] #pathways,
+        body[data-device="mobile"] #journey {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
 
         @media (max-width: 768px) {
             .about-heading { font-size: 2.5rem; }
@@ -312,7 +425,7 @@
           }
         }
     </script>
-</head><body class="selection:bg-primary-container selection:text-black">
+</head><body class="selection:bg-primary-container selection:text-black" data-device="desktop">
 <div class="noise-texture"></div>
 <div class="neural-bg">
 <div class="neural-lines"></div>
@@ -337,7 +450,7 @@
 </nav>
 <main class="relative z-10 pt-20">
 <!-- Hero Section -->
-<section class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+<section class="hero-section relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
 <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
 <div class="mascot-container relative w-[300px] md:w-[600px] h-[300px] md:h-[600px] flex items-center justify-center">
 <div class="holographic-ring w-full h-full opacity-30"></div>
@@ -379,16 +492,16 @@
 </div>
 </div>
 </div>
-<div class="relative z-20 max-w-6xl mx-auto">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-10 border-white/5">
+<div class="hero-content relative z-20 max-w-6xl mx-auto">
+<div class="hero-kicker inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-10 border-white/5">
 <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container">Indiafirst Robotics Franchise</span>
 <span class="w-1 h-1 rounded-full bg-white/20"></span>
 <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/40">Dibrugarh, Assam</span>
 </div>
-<h1 class="text-5xl md:text-[110px] font-headline font-bold leading-[1] md:leading-[0.9] tracking-tighter hero-gradient-text mb-8">
+<h1 class="hero-title text-5xl md:text-[110px] font-headline font-bold leading-[1] md:leading-[0.9] tracking-tighter hero-gradient-text mb-8">
                     Learn Robotics,<br/>Drones &amp; AI
                 </h1>
-<p class="text-white/50 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-16 px-4">
+<p class="hero-copy text-white/50 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-16 px-4">
                     Real courses. Real projects. Real certificates. Architecting the agentic future for students and professionals.
                 </p>
 <div class="visual-showcase relative z-20 px-4 md:px-6">
@@ -408,7 +521,7 @@
 </div>
 </div>
 <!-- Cinematic Dynamic Handshake Animation -->
-<div class="relative w-full max-w-5xl mx-auto py-16 mb-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 px-6">
+<div class="hero-handshake relative w-full max-w-5xl mx-auto py-16 mb-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 px-6">
 <!-- Aerobotix Side -->
 <div class="flex-1 flex flex-col items-center md:items-end text-center md:text-right order-2 md:order-1 relative z-20">
 <div class="partnership-logo mb-4 h-16 md:h-24 w-auto">
@@ -418,7 +531,7 @@
 <h4 class="text-white font-bold text-lg md:text-2xl tracking-tight">Aerobotix Edtech Institute</h4>
 </div>
 <!-- Dynamic Handshake Core -->
-<div class="relative flex items-center justify-center w-full md:w-[500px] h-[350px] order-1 md:order-2 overflow-hidden"><div class="synergy-glow"></div>
+<div class="hero-handshake-core relative flex items-center justify-center w-full md:w-[500px] h-[350px] order-1 md:order-2 overflow-hidden"><div class="synergy-glow"></div>
 <div class="absolute inset-0 bg-primary-container/5 blur-[100px] rounded-full"></div>
 <div class="handshake-core-head glow-filter">
 <svg viewbox="0 0 200 200">
@@ -676,4 +789,23 @@
 </div>
 </div>
 </footer>
+<script>
+        (function () {
+            function updateDeviceMode() {
+                var width = window.innerWidth;
+                var device = "desktop";
+                if (width < 768) {
+                    device = "mobile";
+                } else if (width < 1100) {
+                    device = "tablet";
+                }
+                document.body.setAttribute("data-device", device);
+                document.documentElement.style.setProperty("--vh", (window.innerHeight * 0.01) + "px");
+            }
+
+            updateDeviceMode();
+            window.addEventListener("resize", updateDeviceMode, { passive: true });
+            window.addEventListener("orientationchange", updateDeviceMode);
+        })();
+    </script>
 </body></html>
