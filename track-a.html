@@ -69,6 +69,86 @@
   .animate-in:nth-child(2) { animation-delay: 0.2s; }
   .animate-in:nth-child(3) { animation-delay: 0.3s; }
   .animate-in:nth-child(4) { animation-delay: 0.4s; }
+  .detail-shell {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 32px;
+    padding: 32px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .detail-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--cyan-glow);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .detail-copy {
+    color: rgba(255,255,255,0.64);
+    line-height: 1.7;
+    font-size: 0.98rem;
+  }
+  .detail-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .detail-list li {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+    font-size: 0.95rem;
+    padding-left: 16px;
+    position: relative;
+  }
+  .detail-list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    background: var(--cyan-glow);
+    box-shadow: 0 0 10px rgba(0,242,255,0.55);
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .detail-chip {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.65);
+  }
+  @media (max-width: 768px) {
+    .detail-shell { padding: 20px; border-radius: 24px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .detail-card { padding: 18px; border-radius: 18px; }
+  }
 </style>
 <script>
   tailwind.config = {
@@ -136,6 +216,88 @@
       <div class="glass-panel px-6 py-4 rounded-2xl">
         <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Projects</span>
         <span class="text-2xl font-bold font-headline">10+ Robots</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Flow -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-primary-container pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container block mb-2">Track A Syllabus</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">How Junior Robotics Progresses</h2>
+      <p class="text-white/40 text-lg">This pathway follows the early IFR foundation sequence so students move from hands-on mechanics into visual coding before stepping up to more advanced robotics tracks later.</p>
+    </div>
+    <div class="detail-shell">
+      <div class="detail-grid">
+        <div class="detail-card">
+          <span class="detail-label">Course 01</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">RoboCHAMP</h3>
+          <p class="detail-copy">The foundation course for young learners. Students explore simple machines, structural assembly, gears, pulleys, balance, and mechanical creativity through a non-programmable robotics kit. This is where engineering intuition begins.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Classes 4-6</span>
+            <span class="detail-chip">24 Hours</span>
+            <span class="detail-chip">No Coding</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Course 02</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Scratch Programming</h3>
+          <p class="detail-copy">Students then learn visual block coding through animations, stories, and games. It introduces loops, events, variables, conditions, and logical problem-solving before they ever touch text-based programming.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Classes 4-7</span>
+            <span class="detail-chip">24 Hours</span>
+            <span class="detail-chip">MIT Scratch</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Course 03</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Advanced RoboCHAMP</h3>
+          <p class="detail-copy">After basic RoboCHAMP, students move into motorized mechanical systems. They begin building more complex motion-driven robots, learn drive mechanisms, and take on teamwork and design challenges that bridge them toward programmable robotics.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Lite + Full</span>
+            <span class="detail-chip">20-36 Hours</span>
+            <span class="detail-chip">Motorized Builds</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Next Stage</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Ready for Track B Progression</h3>
+          <p class="detail-copy">Once students are confident with RoboCHAMP and Scratch-style logic, they are ready to move into the next pathway where programmable robotics, electronics, sensors, mobile control, and more advanced robot builds begin in earnest.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Mechanical Thinking</span>
+            <span class="detail-chip">Logic Ready</span>
+            <span class="detail-chip">Bridge to Robotics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Builds -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-white/20 pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-white/50 block mb-2">Projects & Models</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">What Students Build in Track A</h2>
+      <p class="text-white/40 text-lg">The junior path is highly hands-on. Students continuously build named mechanical models and develop an intuitive feel for structure, movement, balance, and creative engineering.</p>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-card glass-panel">
+        <span class="detail-label">RoboCHAMP Models</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Mechanical Builds</h3>
+        <ul class="detail-list">
+          <li>Rider, Windmill, Speedster, Fanbot and Roller Bike.</li>
+          <li>Sycon Car, 4 Wheel Drive, Roto Racer and F1 Car.</li>
+          <li>Tractor, Crane, Bike and Humanoid.</li>
+        </ul>
+      </div>
+      <div class="detail-card glass-panel">
+        <span class="detail-label">Skill Outcomes</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">What Junior Learners Gain</h3>
+        <ul class="detail-list">
+          <li>Understanding of gears, levers, pulleys, wheels, axles and linkages.</li>
+          <li>Confidence in assembling structures and troubleshooting model stability.</li>
+          <li>Visual coding logic through Scratch-based stories, loops, conditions and events.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -231,7 +393,8 @@
       <p class="text-white/40 mb-12 text-lg max-w-lg mx-auto">Join Track A and start your robotics journey. No prior experience needed — just curiosity.</p>
       <div class="flex flex-col md:flex-row justify-center gap-4">
         <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary-container transition-all neon-glow inline-block">Enroll Now</a>
-        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20A%20(Junior%20Robotics)." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Talk to Counsellor</a>
+        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20A%20(Junior%20Robotics)." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Chat with Counsellor</a>
+        <a href="tel:+919957952907" class="px-10 py-5 rounded-full border border-primary/40 text-primary font-bold text-[11px] uppercase tracking-widest hover:bg-primary/10 transition-all inline-block">Call Counsellor</a>
       </div>
     </div>
   </section>

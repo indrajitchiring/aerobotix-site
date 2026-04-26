@@ -75,6 +75,86 @@
   .animate-in:nth-child(4) { animation-delay: 0.25s; }
   .animate-in:nth-child(5) { animation-delay: 0.3s; }
   .animate-in:nth-child(6) { animation-delay: 0.35s; }
+  .detail-shell {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 32px;
+    padding: 32px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .detail-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .detail-copy {
+    color: rgba(255,255,255,0.64);
+    line-height: 1.7;
+    font-size: 0.98rem;
+  }
+  .detail-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .detail-list li {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+    font-size: 0.95rem;
+    padding-left: 16px;
+    position: relative;
+  }
+  .detail-list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    background: var(--secondary);
+    box-shadow: 0 0 10px rgba(220,184,255,0.55);
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .detail-chip {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.65);
+  }
+  @media (max-width: 768px) {
+    .detail-shell { padding: 20px; border-radius: 24px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .detail-card { padding: 18px; border-radius: 18px; }
+  }
 </style>
 <script>
   tailwind.config = {
@@ -145,6 +225,94 @@
       <div class="glass-panel px-6 py-4 rounded-2xl">
         <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Outcome</span>
         <span class="text-2xl font-bold font-headline">Autonomous Robots</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Path -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-secondary-container pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Track B Syllabus</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">How Senior Robotics & AI Progresses</h2>
+      <p class="text-white/40 text-lg">This pathway follows the real IFR intermediate-to-advanced route: coding foundations, programmable robotics, CAD, autonomous systems, drones, Raspberry Pi, IoT, and fabrication.</p>
+    </div>
+    <div class="detail-shell">
+      <div class="detail-grid">
+        <div class="detail-card">
+          <span class="detail-label">Programming Foundation</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Scratch, App Inventor, HTML & Python</h3>
+          <p class="detail-copy">Students begin with logic and visual coding, then move into mobile app building, website structure, and Python fundamentals. This gives them the software confidence needed for robotics, IoT, and AI workflows.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Scratch</span>
+            <span class="detail-chip">App Inventor</span>
+            <span class="detail-chip">HTML</span>
+            <span class="detail-chip">Python</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Programmable Robotics</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Champion Lite, Champion & Challenger</h3>
+          <p class="detail-copy">Learners progress into electronics-rich robotics through R-Star, Champion Lite, Champion and Challenger. They wire circuits, control motors, work with sensors, add wireless control, and move into autonomous robot logic.</p>
+          <div class="chip-row">
+            <span class="detail-chip">R-Star</span>
+            <span class="detail-chip">Arduino IDE</span>
+            <span class="detail-chip">Sensors</span>
+            <span class="detail-chip">Bluetooth</span>
+            <span class="detail-chip">Autonomy</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Design & Fabrication</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Creo CAD and 3D Printing</h3>
+          <p class="detail-copy">Students learn to model parts, assemblies, engineering drawings, and prototypes in Creo, then take designs into additive manufacturing. This connects robotics to real product engineering practice.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Creo Basic</span>
+            <span class="detail-chip">Creo Advanced</span>
+            <span class="detail-chip">3D Printing</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Advanced Systems</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Drone, Raspberry Pi & IoT</h3>
+          <p class="detail-copy">The senior path expands into UAV systems, Linux computing, cloud-connected devices, and real-world automation dashboards. These courses move students closer to engineering, R&amp;D, and applied AI use-cases.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Drone Tech</span>
+            <span class="detail-chip">Raspberry Pi</span>
+            <span class="detail-chip">IoT Cloud</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Labs & Projects -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-primary-container pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container block mb-2">Builds & Labs</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">What Students Build in Track B</h2>
+      <p class="text-white/40 text-lg">Track B is heavily project-driven. Students don’t just study concepts — they wire, code, test, assemble, and prototype across robotics, CAD, drone systems and connected hardware.</p>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-card glass-panel">
+        <span class="detail-label">Robot Builds</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Core Robotics Systems & Smart Builds</h3>
+        <ul class="detail-list">
+          <li>R-Star bridge projects: RGB LED, touch switch, IR comparator, automatic light controller and H-bridge motor driver circuits.</li>
+          <li>Champion builds: traffic light control, buzzer control, sound sensor, DC motor controller and bumper-switch obstacle avoider.</li>
+          <li>Autonomous robot builds: line follower, obstacle avoider and edge avoider systems across the programmable robotics sequence.</li>
+          <li>Challenger builds: Bluetooth controlled robot, voice control robot, gesture control robot and gripper assembly.</li>
+          <li>Advanced Arduino development projects including LCD, SSD, RF, DTMF and robotic arm builds.</li>
+        </ul>
+      </div>
+      <div class="detail-card glass-panel">
+        <span class="detail-label">Advanced Labs</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Drone, IoT and Raspberry Pi Projects</h3>
+        <ul class="detail-list">
+          <li>Drone assembly, flight training, firmware updates, vertical velocity LED control, flips and auto-land.</li>
+          <li>Raspberry Pi GPIO, ultrasonic, LED, buzzer and PIR sensor interfacing in Python.</li>
+          <li>NodeMCU cloud control, Blynk home automation, Telegram bot control, soil moisture and LCD projects.</li>
+          <li>Creo part design, assemblies, STL export and 3D printed nut-and-bolt prototypes.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -348,7 +516,8 @@
       <p class="text-white/40 mb-12 text-lg max-w-lg mx-auto">15 months from beginner to building autonomous robots and flying AI-powered drones.</p>
       <div class="flex flex-col md:flex-row justify-center gap-4">
         <a href="aerobotix_enrollment_form.html" class="bg-secondary-container text-white px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-secondary transition-all neon-glow-purple inline-block">Enroll Now</a>
-        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20B%20(Senior%20Robotics%20%26%20AI)." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Talk to Counsellor</a>
+        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20B%20(Senior%20Robotics%20%26%20AI)." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Chat with Counsellor</a>
+        <a href="tel:+919957952907" class="px-10 py-5 rounded-full border border-secondary/40 text-secondary-light font-bold text-[11px] uppercase tracking-widest hover:bg-secondary/10 transition-all inline-block">Call Counsellor</a>
       </div>
     </div>
   </section>

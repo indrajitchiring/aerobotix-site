@@ -172,6 +172,15 @@
         
         .partnership-logo { animation: logoFadeIn 4s ease-out forwards; } 
         @keyframes logoFadeIn { 0%, 50% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+        .hero-logo-image {
+            display: block;
+            max-width: 220px;
+            max-height: 118px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.32));
+        }
 
         .about-wrapper { padding: 80px 24px; position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; }
         .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; color: var(--cyan-glow); margin-bottom: 24px; text-align: center; }
@@ -275,6 +284,55 @@
             border-radius: 50%;
             background: var(--cyan-glow);
             box-shadow: 0 0 16px rgba(0, 242, 255, 0.75);
+        }
+        .brand-lockup {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-width: 160px;
+            min-height: 72px;
+            padding: 14px 18px;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+            backdrop-filter: blur(18px);
+        }
+        .brand-lockup-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: white;
+        }
+        .brand-lockup-mark::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .brand-lockup-sub {
+            margin-top: 6px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+        .brand-lockup-aero .brand-lockup-mark::before {
+            background: var(--cyan-glow);
+            box-shadow: 0 0 18px rgba(0, 242, 255, 0.7);
+        }
+        .brand-lockup-ifr .brand-lockup-mark::before {
+            background: #ff4d4d;
+            box-shadow: 0 0 18px rgba(255, 77, 77, 0.55);
+        }
+        .brand-lockup-ifr .brand-lockup-mark {
+            font-size: 1.05rem;
         }
         body[data-device="tablet"] .hero-section {
             padding-top: 2rem;
@@ -488,7 +546,23 @@
         body[data-device="mobile"] footer .gap-12 {
             gap: 1.5rem;
         }
-
+        body[data-device="mobile"] .brand-lockup {
+            min-width: 136px;
+            min-height: 58px;
+            padding: 10px 12px;
+            border-radius: 18px;
+        }
+        body[data-device="mobile"] .brand-lockup-mark {
+            font-size: 0.92rem;
+        }
+        body[data-device="mobile"] .brand-lockup-sub {
+            font-size: 8px;
+            letter-spacing: 0.16em;
+        }
+        body[data-device="mobile"] .hero-logo-image {
+            max-width: 152px;
+            max-height: 88px;
+        }
         @media (max-width: 768px) {
             .about-heading { font-size: 2.5rem; }
             .partner-block, .aerobotix-block { padding: 24px; }
@@ -626,8 +700,8 @@
 <div class="hero-handshake relative w-full max-w-5xl mx-auto py-16 mb-12 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0 px-6">
 <!-- Aerobotix Side -->
 <div class="flex-1 flex flex-col items-center md:items-end text-center md:text-right order-2 md:order-1 relative z-20">
-<div class="partnership-logo mb-4 h-16 md:h-24 w-auto">
-<img alt="Aerobotix Logo" class="h-full object-contain filter brightness-110" src="https://lh3.googleusercontent.com/aida/ADBb0ugHq287rYRA64PhBKn79bN0fxVmB-xnBDZVaVq_rfyEFZ9qxwGMv1k7TxEZERKB3CjvZskKmWv_DvN9FRuctDpessuHDPcOz1msaAA_pEeWKMannbxrVQPPz8cVlLB-5rkBx1LLxNTW4p2rn1maXdE0b3dLlnDBXt1on33po4NfqgeeTPRm-ZEd3VygBXg0B2Krq3PBInQxAd2hzk8vbdMv5SKUtqn1KbaPXmqy6CXwPpMFHz96BcRwZCpSOO6Ze0UwsdRDPvLshA"/>
+<div class="partnership-logo mb-4">
+<img alt="Aerobotix Edtech Institute Logo" class="hero-logo-image" src="assets/logos/aerobotix-logo.png"/>
 </div>
 <span class="text-[10px] md:text-[11px] font-bold tracking-[0.4em] uppercase text-white/30 block mb-1">Collaborative Power</span>
 <h4 class="text-white font-bold text-lg md:text-2xl tracking-tight">Aerobotix Edtech Institute</h4>
@@ -660,17 +734,17 @@
 </div>
 <!-- Industrial Hand (Left) -->
 <div class="industrial-hand-realistic absolute left-[-150px] md:left-[-100px] z-10 w-64 md:w-80 h-64 md:h-80">
-<img alt="Industrial Robotic Hand" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhyu8Ee41XSDHbzxbI2X1gSlEgjZliIcNVK_7PFLhlLl25KKE84d7zLinmF-24DKcuS4vxnq4tYGsQ7pWwFYWIhosEubL99ugjfJWe-Y5Z-AyrGR8YM5jtIJek5jiMqr5s_gGRReFtVC-Kt5T0EIFM_LC_WqeOYCCU8COKJ7w3OiauX4LaRbA8-CesF1ptVYvM8KY7kfEgOrrDAk1B1t13BwDqK1E9hnCn5FvvZkO1o--Z-HpgOn3VKkZk"/>
+<img alt="Industrial Robotic Hand" class="w-full h-full object-contain" src="assets/generated/hero-hand-left.png"/>
 </div>
 <!-- White Hand (Right) -->
 <div class="white-hand-realistic absolute right-[-150px] md:right-[-100px] z-10 w-64 md:w-80 h-64 md:h-80">
-<img alt="White Robotic Hand" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiSXeXpVqSUToCEQx53kiFG6KjeCL5kIjS602-1bq8xXUNUZEfToV6BpZPgAAVgJanT3cfYieF5nf_t5k06M1RvFpvUI8E0xk6XkvIigwH4a76pUucwD6sK4_Gj-n7FbMx9T8E4O6pl-VSnQZYeV94I7DwyZvJ86zPhMBr-g4TmimKForDPtWiTCyCoEK8L4mT5mncjW38paU1XmIMTZQZ5QgNyxJZ8ro5GCv0dS2Evq4HN8Pcb97t3X7Q"/>
+<img alt="White Robotic Hand" class="w-full h-full object-contain" src="assets/generated/hero-hand-right.png"/>
 </div>
 </div>
 <!-- IFR Side -->
 <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left order-3 relative z-20">
-<div class="partnership-logo mb-4 h-16 md:h-24 w-auto flex items-center">
-<img alt="Indiafirst Robotics Logo" class="h-12 md:h-16 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujnLGyBskZUHJGxp239X19gpY-H0xR6lqjmFt2py2ZA3c-5n02bEsR7wA9tIgGLHres71ub3EbyY3veYXNN1XaEd1II6ofY-mP6n-ogP0aibWlNdyv5N4-7rpEYxNd6D2GQ4bADRdMQtJ8uNBxapUAEGXHzO_7w3XCtBrzS0KBpdb2e_oTEVyXsJLIezbZ6AwgI_IBmq1HSkkB3LsU3uyQGbD7JCI4g8FXXekYKsz1hcqp5zgLcaQ-v8FzXVUpuO2rVSNfRcBc9wQ"/>
+<div class="partnership-logo mb-4">
+<img alt="Indiafirst Robotics Logo" class="hero-logo-image" src="assets/logos/ifr-logo.png"/>
 </div>
 <span class="text-[10px] md:text-[11px] font-bold tracking-[0.4em] uppercase text-primary-container block mb-1">Authorized Hub</span>
 <h4 class="text-white font-bold text-lg md:text-2xl tracking-tight">Indiafirst Robotics</h4>
@@ -852,7 +926,10 @@
                         Enroll Now — Trial Class
                     </a>
 <a href="https://wa.me/919957952907?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Aerobotix%20courses." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all w-full md:w-auto inline-block text-center">
-                        Talk to Counsellor
+                        Chat with Counsellor
+                    </a>
+<a href="tel:+919957952907" class="px-10 py-5 rounded-full border border-cyan-400/40 text-cyan-300 font-bold text-[11px] uppercase tracking-widest hover:bg-cyan-400/10 transition-all w-full md:w-auto inline-block text-center">
+                        Call Counsellor
                     </a>
 </div>
 <!-- Footer Info -->
