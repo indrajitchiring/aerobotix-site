@@ -1,0 +1,310 @@
+<html class="dark" lang="en" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Explore Pathway C at Aerobotix in Dibrugarh, Assam: a 12-month accelerated robotics, drones, IoT, automation, and AI pathway with Month 7 entry for Track B completers.">
+<title>Pathway C | Accelerated Robotics, Drones & AI in Dibrugarh | Aerobotix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --deep-black: #050505;
+    --cyan-glow: #00f2ff;
+    --purple-glow: #7701d0;
+    --amber-glow: #f47c20;
+  }
+  body { background-color: var(--deep-black); color: #e5e2e1; overflow-x: hidden; font-family: 'Inter', sans-serif; }
+  .noise-texture { position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+  .neural-bg { position: fixed; inset: 0; z-index: 0; background: radial-gradient(circle at 20% 20%, rgba(244,124,32,0.08) 0%, transparent 35%), radial-gradient(circle at 75% 15%, rgba(119,1,208,0.08) 0%, transparent 40%), radial-gradient(circle at 70% 80%, rgba(0,242,255,0.03) 0%, transparent 40%); }
+  .glass-panel { background: rgba(15, 15, 15, 0.4); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; }
+  .glass-panel:hover { transform: translateY(-4px); border-color: rgba(244,124,32,0.28); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(244,124,32,0.08); }
+  .card-glow { position: absolute; top: 50%; left: 50%; width: 140px; height: 140px; background: radial-gradient(circle, rgba(244,124,32,0.55) 0%, transparent 70%); opacity: 0; transform: translate(-50%, -50%); transition: opacity 0.5s; pointer-events: none; filter: blur(45px); }
+  .glass-panel:hover .card-glow { opacity: 0.07; }
+  .hero-gradient-text { background: linear-gradient(135deg, #fff 0%, #ffe0c0 40%, #f47c20 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .detail-shell { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 32px; padding: 32px; backdrop-filter: blur(16px); box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+  .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .detail-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 24px; }
+  .detail-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.24em; color: #ffb066; margin-bottom: 12px; display: block; }
+  .detail-copy { color: rgba(255,255,255,0.64); line-height: 1.7; font-size: 0.98rem; }
+  .detail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .detail-list li { color: rgba(255,255,255,0.7); line-height: 1.55; font-size: 0.95rem; padding-left: 16px; position: relative; }
+  .detail-list li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; position: absolute; left: 0; top: 0.65em; background: #f47c20; box-shadow: 0 0 10px rgba(244,124,32,0.5); }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .detail-chip { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.65); }
+  .module-number { font-family: 'Space Grotesk', sans-serif; font-size: 4rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, rgba(244,124,32,0.22), rgba(255,224,192,0.16)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .bridge-banner { background: linear-gradient(135deg, rgba(244,124,32,0.12), rgba(255,255,255,0.02)); border: 1px solid rgba(244,124,32,0.35); border-radius: 24px; padding: 24px; display: flex; gap: 18px; align-items: flex-start; }
+  @media (max-width: 768px) {
+    .detail-shell { padding: 20px; border-radius: 24px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .detail-card { padding: 18px; border-radius: 18px; }
+    .bridge-banner { flex-direction: column; }
+  }
+</style>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background": "#050505",
+          "primary": "#e1fdff",
+          "primary-container": "#00f2ff",
+          "secondary": "#dcb8ff",
+          "secondary-container": "#7701d0",
+          "surface": "#0e0e0e",
+          "outline": "#849495",
+          "on-surface": "#e5e2e1"
+        },
+        fontFamily: {
+          "headline": ["Space Grotesk"],
+          "body": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var isLocalFile = window.location.protocol === "file:";
+    var homeUrl = isLocalFile
+      ? new URL("code.html", window.location.href)
+      : new URL("index.html", window.location.href);
+
+    if (isLocalFile && document.referrer) {
+      try {
+        var referrerUrl = new URL(document.referrer);
+        if (referrerUrl.protocol === "file:" && /(?:code|index)\.html$/i.test(referrerUrl.pathname)) {
+          referrerUrl.hash = "";
+          homeUrl = referrerUrl;
+        }
+      } catch (error) {
+      }
+    }
+
+    document.querySelectorAll("[data-home-link]").forEach(function (link) {
+      link.href = homeUrl.href;
+    });
+
+    document.querySelectorAll("[data-home-section]").forEach(function (link) {
+      var sectionUrl = new URL(homeUrl.href);
+      sectionUrl.hash = link.getAttribute("data-home-section");
+      link.href = sectionUrl.href;
+    });
+  });
+</script>
+</head>
+<body class="selection:bg-orange-400 selection:text-black">
+<div class="noise-texture"></div>
+<div class="neural-bg"></div>
+
+<nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
+  <div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
+    <a href="index.html" data-home-link class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
+      <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
+      Aerobotix
+    </a>
+    <div class="hidden md:flex gap-8 items-center">
+      <a href="index.html#pathways" data-home-section="pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
+      <a href="index.html#journey" data-home-section="journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
+      <a href="index.html#features" data-home-section="features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
+      <a href="index.html#about" data-home-section="about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
+    </div>
+    <div class="flex gap-4 md:gap-6 items-center">
+      <a href="index.html" data-home-link class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
+      <a href="aerobotix_enrollment_form.html" class="bg-orange-500 text-white px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-orange-400 transition-all">Enroll Now</a>
+    </div>
+  </div>
+</nav>
+
+<main class="relative z-10 pt-32 pb-20">
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
+      <div class="w-20 h-20 rounded-3xl border border-orange-400/30 bg-orange-400/10 flex items-center justify-center text-2xl font-headline font-bold text-orange-300">C</div>
+      <div>
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-orange-300 block">Accelerated 12-Month Pathway</span>
+          <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-orange-500 text-white px-3 py-1 rounded-full">Fast Track</span>
+        </div>
+        <h1 class="text-4xl md:text-7xl font-headline font-bold tracking-tighter hero-gradient-text mb-6">Pathway C</h1>
+        <p class="text-white/50 text-lg md:text-xl max-w-3xl leading-relaxed">A one-year accelerated path from basics to advanced systems. Pathway C compresses the foundations, skips slower theory layers and drives learners into automation, autonomous drones, IoT, humanoid builds, and applied AI.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-6 items-center">
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Monthly Fee</span>
+        <span class="text-2xl font-bold font-headline text-orange-300">Rs 999</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl border border-orange-400/30 bg-orange-400/10">
+        <span class="text-[9px] font-bold tracking-widest text-orange-300 uppercase block mb-1">One-Time Payment</span>
+        <span class="text-2xl font-bold font-headline text-orange-300">Rs 9999/-</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Duration</span>
+        <span class="text-2xl font-bold font-headline">12 Months</span>
+      </div>
+      <div class="glass-panel px-6 py-4 rounded-2xl">
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Outcome</span>
+        <span class="text-2xl font-bold font-headline">Advanced Robotics Systems</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-20">
+    <div class="bridge-banner">
+      <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center text-xl font-bold flex-shrink-0">7</div>
+      <div>
+        <h3 class="text-2xl font-headline font-bold text-white mb-2">Month 7 Entry for Track B Completers</h3>
+        <p class="text-white/60 leading-relaxed">Students who already complete the one-year Track B route can enter Pathway C from Month 7, because the second half of Pathway C is where the heavier specialization begins: 4-axis automation, autonomous drones, cloud IoT systems, humanoid builds, and applied AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-orange-400 pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-orange-300 block mb-2">Pathway C Syllabus</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">How Pathway C Progresses</h2>
+      <p class="text-white/40 text-lg">Pathway C is designed for faster learners who want the complete robotics-to-autonomy arc in a shorter and sharper format.</p>
+    </div>
+    <div class="detail-shell">
+      <div class="detail-grid">
+        <div class="detail-card">
+          <span class="detail-label">Accelerated Core</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Programming Logic, Electronics and Arduino Foundations</h3>
+          <p class="detail-copy">programming logic, circuits, Arduino, sensors, motors, and robot response systems</p>
+          <div class="chip-row">
+            <span class="detail-chip">Logic</span>
+            <span class="detail-chip">Electronics</span>
+            <span class="detail-chip">Arduino</span>
+            <span class="detail-chip">Sensors</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Robot Sequence</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">R-Star to Challenger with Control and Flight</h3>
+          <p class="detail-copy">Learners move through R-Star, Champion Lite, Champion, and Challenger builds, then extend that progression into Bluetooth robot control and manual drone readiness.</p>
+          <div class="chip-row">
+            <span class="detail-chip">R-Star</span>
+            <span class="detail-chip">Champion</span>
+            <span class="detail-chip">Challenger</span>
+            <span class="detail-chip">Manual Drone</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Advanced Systems</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Robotic Arm Automation, Additive Manufacturing and Cloud IoT</h3>
+          <p class="detail-copy">From Month 7 onward, Pathway C becomes the advanced specialization path with 4-axis automation, additive manufacturing, cloud-connected systems, dashboards, and live monitoring.</p>
+          <div class="chip-row">
+            <span class="detail-chip">4 Axis Automation</span>
+            <span class="detail-chip">Additive Manufacturing</span>
+            <span class="detail-chip">Cloud IoT</span>
+            <span class="detail-chip">Remote Dashboards</span>
+          </div>
+        </div>
+        <div class="detail-card">
+          <span class="detail-label">Autonomy and AI</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Autonomous Drones, Humanoid Robots and Applied AI</h3>
+          <p class="detail-copy">The final specialization layer pushes into GPS-guided drones, PID control, humanoid robot building, and applied AI for robotics use-cases.</p>
+          <div class="chip-row">
+            <span class="detail-chip">Autonomous Drone</span>
+            <span class="detail-chip">Humanoid Robot</span>
+            <span class="detail-chip">Applied AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-orange-400 pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-orange-300 block mb-2">Builds and Labs</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">What Students Build in Pathway C</h2>
+      <p class="text-white/40 text-lg">Pathway C combines fast-track foundations with the deeper systems work that sits beyond Track B.</p>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-card glass-panel">
+        <span class="detail-label">Months 1-6</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Accelerated Robotics Foundations</h3>
+        <ul class="detail-list">
+          <li>R-Star, Champion Lite, Champion, and Challenger builds in a compressed progression.</li>
+          <li>Arduino and sensor labs that move directly into working robot control.</li>
+          <li>Bluetooth robot control, app-triggered behavior, and manual drone handling.</li>
+        </ul>
+      </div>
+      <div class="detail-card glass-panel">
+        <span class="detail-label">Months 7-12</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Specialization Systems Lab</h3>
+        <ul class="detail-list">
+          <li>Robotic Arm Automation (4 Axis) with structured motion sequences and control logic.</li>
+          <li>Additive Manufacturing workflows with advanced CAD-to-print prototyping.</li>
+          <li>Cloud Based IoT Systems, Remote Dashboards and live hardware monitoring.</li>
+          <li>Autonomous Drone Systems using GPS, PID control, and programmed flight paths.</li>
+          <li>Humanoid Robot Building and applied AI projects for robotics decision-making.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
+    <div class="border-l-2 border-orange-400 pl-8 mb-12">
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-orange-300 block mb-2">Learning Flow</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">Pathway C in Three Stages</h2>
+      <p class="text-white/40 text-lg">A full-stack one-year route for learners who want the basics and the specialization in one continuous pathway.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-panel rounded-3xl p-8">
+        <div class="card-glow"></div>
+        <span class="module-number">01</span>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Accelerate the Basics</h3>
+        <p class="text-white/50 leading-relaxed mb-6">Students move quickly into logic, electronics, Arduino, sensors, robot builds, and control systems without spending time on slower beginner web modules.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Arduino</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Sensors</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Robotics</span>
+        </div>
+      </div>
+      <div class="glass-panel rounded-3xl p-8">
+        <div class="card-glow"></div>
+        <span class="module-number">02</span>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Specialize from Month 7</h3>
+        <p class="text-white/50 leading-relaxed mb-6">Month 7 begins the specialization layer, which is also the entry point for students who already finish Track B.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">4 Axis</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">IoT</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Autonomy</span>
+        </div>
+      </div>
+      <div class="glass-panel rounded-3xl p-8">
+        <div class="card-glow"></div>
+        <span class="module-number">03</span>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Build Future Systems</h3>
+        <p class="text-white/50 leading-relaxed mb-6">The final outcome is a learner who can build, automate, connect, monitor, and intelligently control advanced robotics systems.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Humanoid</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Applied AI</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Advanced Systems</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[900px] mx-auto px-6 md:px-8 text-center">
+    <div class="glass-panel rounded-[48px] p-10 md:p-20">
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Ready for the Fast Track?</h2>
+      <p class="text-white/40 mb-12 text-lg max-w-2xl mx-auto">Pathway C is designed for serious learners who want a faster route from basics to advanced robotics systems, or for Track B completers who want to enter directly into the specialization half.</p>
+      <div class="flex flex-col md:flex-row justify-center gap-4">
+        <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-orange-300 transition-all inline-block">Enroll Now</a>
+        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Pathway%20C." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Chat with Counsellor</a>
+        <a href="tel:+919957952907" class="px-10 py-5 rounded-full border border-orange-400/40 text-orange-300 font-bold text-[11px] uppercase tracking-widest hover:bg-orange-400/10 transition-all inline-block">Call Counsellor</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="w-full py-16 bg-[#050505] border-t border-white/5 relative z-10">
+  <div class="flex flex-col md:flex-row justify-between items-center px-10 max-w-7xl mx-auto gap-8">
+    <div class="text-2xl font-bold tracking-tighter text-white font-headline">Aerobotix</div>
+    <p class="text-white/30 text-[10px] font-bold uppercase tracking-[0.2em]">Copyright 2026 Aerobotix Edtech Institute.</p>
+  </div>
+</footer>
+</body>
+</html>

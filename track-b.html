@@ -2,8 +2,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description" content="Explore Track B Explorer at Aerobotix in Dibrugarh, Assam with coding, Arduino, sensors, Bluetooth robotics, Challenger builds, and manual drone flying.">
-<title>Track B Explorer | Coding, Arduino & Robotics Course in Dibrugarh | Aerobotix</title>
+<meta name="description" content="Explore Track B at Aerobotix in Dibrugarh, Assam with Scratch, App Inventor, Python basics, Arduino, sensors, Challenger robotics, Bluetooth control, manual drone flying, and hands-on robotics builds.">
+<title>Track B | 12-Month Robotics Course in Dibrugarh | Aerobotix</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -13,142 +13,27 @@
     --purple-glow: #7701d0;
     --light-blue: #a5f3fc;
   }
-  body {
-    background-color: var(--deep-black);
-    color: #e5e2e1;
-    overflow-x: hidden;
-    font-family: 'Inter', sans-serif;
-  }
-  .noise-texture {
-    position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-  .neural-bg {
-    position: fixed; inset: 0; z-index: 0;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(119, 1, 208, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 70% 80%, rgba(0, 242, 255, 0.03) 0%, transparent 40%);
-  }
-  .glass-panel {
-    background: rgba(15, 15, 15, 0.4);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .glass-panel:hover {
-    transform: translateY(-4px);
-    border-color: rgba(119, 1, 208, 0.3);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(119, 1, 208, 0.08);
-  }
-  .card-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s;
-    pointer-events: none;
-    filter: blur(40px);
-  }
+  body { background-color: var(--deep-black); color: #e5e2e1; overflow-x: hidden; font-family: 'Inter', sans-serif; }
+  .noise-texture { position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+  .neural-bg { position: fixed; inset: 0; z-index: 0; background: radial-gradient(circle at 30% 20%, rgba(119, 1, 208, 0.05) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0, 242, 255, 0.03) 0%, transparent 40%); }
+  .glass-panel { background: rgba(15, 15, 15, 0.4); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; }
+  .glass-panel:hover { transform: translateY(-4px); border-color: rgba(119, 1, 208, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(119, 1, 208, 0.08); }
+  .card-glow { position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%); opacity: 0; transform: translate(-50%, -50%); transition: opacity 0.5s; pointer-events: none; filter: blur(40px); }
   .glass-panel:hover .card-glow { opacity: 0.08; }
-  .hero-gradient-text {
-    background: linear-gradient(135deg, #fff 0%, #dcb8ff 50%, #7701d0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  .hero-gradient-text { background: linear-gradient(135deg, #fff 0%, #dcb8ff 50%, #7701d0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .neon-glow-purple { box-shadow: 0 0 15px rgba(119, 1, 208, 0.4); transition: all 0.3s ease; }
   .neon-glow-purple:hover { box-shadow: 0 0 30px rgba(119, 1, 208, 0.7); }
-  .module-number {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    background: linear-gradient(135deg, rgba(119,1,208,0.2), rgba(220,184,255,0.15));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .detail-shell {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 32px;
-    padding: 32px;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-  }
-  .detail-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-  }
-  .detail-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 24px;
-    padding: 24px;
-  }
-  .detail-label {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-    color: #dcb8ff;
-    margin-bottom: 12px;
-    display: block;
-  }
-  .detail-copy {
-    color: rgba(255,255,255,0.64);
-    line-height: 1.7;
-    font-size: 0.98rem;
-  }
-  .detail-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 10px;
-  }
-  .detail-list li {
-    color: rgba(255,255,255,0.7);
-    line-height: 1.55;
-    font-size: 0.95rem;
-    padding-left: 16px;
-    position: relative;
-  }
-  .detail-list li::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    background: #dcb8ff;
-    box-shadow: 0 0 10px rgba(220,184,255,0.55);
-  }
-  .chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
-  .detail-chip {
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.65);
-  }
+  .module-number { font-family: 'Space Grotesk', sans-serif; font-size: 4rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, rgba(119,1,208,0.2), rgba(220,184,255,0.15)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .detail-shell { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 32px; padding: 32px; backdrop-filter: blur(16px); box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+  .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .detail-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 24px; }
+  .detail-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.24em; color: #dcb8ff; margin-bottom: 12px; display: block; }
+  .detail-copy { color: rgba(255,255,255,0.64); line-height: 1.7; font-size: 0.98rem; }
+  .detail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .detail-list li { color: rgba(255,255,255,0.7); line-height: 1.55; font-size: 0.95rem; padding-left: 16px; position: relative; }
+  .detail-list li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; position: absolute; left: 0; top: 0.65em; background: #dcb8ff; box-shadow: 0 0 10px rgba(220,184,255,0.55); }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .detail-chip { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.65); }
   @media (max-width: 768px) {
     .detail-shell { padding: 20px; border-radius: 24px; }
     .detail-grid { grid-template-columns: 1fr; }
@@ -178,6 +63,35 @@
     }
   }
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var isLocalFile = window.location.protocol === "file:";
+    var homeUrl = isLocalFile
+      ? new URL("code.html", window.location.href)
+      : new URL("index.html", window.location.href);
+
+    if (isLocalFile && document.referrer) {
+      try {
+        var referrerUrl = new URL(document.referrer);
+        if (referrerUrl.protocol === "file:" && /(?:code|index)\.html$/i.test(referrerUrl.pathname)) {
+          referrerUrl.hash = "";
+          homeUrl = referrerUrl;
+        }
+      } catch (error) {
+      }
+    }
+
+    document.querySelectorAll("[data-home-link]").forEach(function (link) {
+      link.href = homeUrl.href;
+    });
+
+    document.querySelectorAll("[data-home-section]").forEach(function (link) {
+      var sectionUrl = new URL(homeUrl.href);
+      sectionUrl.hash = link.getAttribute("data-home-section");
+      link.href = sectionUrl.href;
+    });
+  });
+</script>
 </head>
 <body class="selection:bg-secondary-container selection:text-white">
 <div class="noise-texture"></div>
@@ -185,18 +99,18 @@
 
 <nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
   <div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
-    <a href="https://aerobotix.co.in/" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
+    <a href="index.html" data-home-link class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
       <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
       Aerobotix
     </a>
     <div class="hidden md:flex gap-8 items-center">
-      <a href="https://aerobotix.co.in/#pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
-      <a href="https://aerobotix.co.in/#journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
-      <a href="https://aerobotix.co.in/#features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
-      <a href="https://aerobotix.co.in/#about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
+      <a href="index.html#pathways" data-home-section="pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
+      <a href="index.html#journey" data-home-section="journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
+      <a href="index.html#features" data-home-section="features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
+      <a href="index.html#about" data-home-section="about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
     </div>
     <div class="flex gap-4 md:gap-6 items-center">
-      <a href="https://aerobotix.co.in/" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
+      <a href="index.html" data-home-link class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
       <a href="aerobotix_enrollment_form.html" class="bg-secondary-container text-white px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-secondary transition-all neon-glow-purple">Enroll Now</a>
     </div>
   </div>
@@ -205,14 +119,14 @@
 <main class="relative z-10 pt-32 pb-20">
   <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-32">
     <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
-      <div class="w-20 h-20 rounded-3xl border border-secondary-container/30 bg-secondary-container/10 flex items-center justify-center text-2xl font-headline font-bold text-secondary">EX</div>
+      <div class="w-20 h-20 rounded-3xl border border-secondary-container/30 bg-secondary-container/10 flex items-center justify-center text-2xl font-headline font-bold text-secondary">TB</div>
       <div>
         <div class="flex items-center gap-3 mb-3 flex-wrap">
           <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block">Class 7-12 · Track B</span>
-          <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full">Explorer</span>
+          <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full">12-Month Pathway</span>
         </div>
-        <h1 class="text-4xl md:text-7xl font-headline font-bold tracking-tighter hero-gradient-text mb-6">Track B Explorer</h1>
-        <p class="text-white/50 text-lg md:text-xl max-w-3xl leading-relaxed">The first 12-month senior pathway that builds coding confidence, electronics fundamentals, Arduino control, programmable robotics, Bluetooth systems, and safe manual drone flying.</p>
+        <h1 class="text-4xl md:text-7xl font-headline font-bold tracking-tighter hero-gradient-text mb-6">Track B</h1>
+        <p class="text-white/50 text-lg md:text-xl max-w-3xl leading-relaxed">A complete 12-month Track B pathway that builds coding confidence, electronics fundamentals, Arduino control, programmable robotics, Bluetooth systems, safe manual drone flying, and stronger hands-on robotics confidence.</p>
       </div>
     </div>
     <div class="flex flex-wrap gap-6 items-center">
@@ -230,45 +144,44 @@
       </div>
       <div class="glass-panel px-6 py-4 rounded-2xl">
         <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Outcome</span>
-        <span class="text-2xl font-bold font-headline">Control Smart Robots</span>
+        <span class="text-2xl font-bold font-headline">Build and Control Robots</span>
       </div>
     </div>
   </section>
 
   <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
     <div class="border-l-2 border-secondary-container pl-8 mb-12">
-      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Track B Explorer Syllabus</span>
-      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">How Explorer Progresses</h2>
-      <p class="text-white/40 text-lg">Explorer is the foundation stage for senior learners. It moves from logic and coding into sensors, Arduino, R-Star to Challenger robotics, Bluetooth control, and hands-on manual drone operation.</p>
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Track B Syllabus</span>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">How Track B Progresses</h2>
+      <p class="text-white/40 text-lg">Track B guides learners through coding logic, electronics, robot progression, control systems, and confident project builds across a full 12-month pathway.</p>
     </div>
     <div class="detail-shell">
       <div class="detail-grid">
         <div class="detail-card">
-          <span class="detail-label">Programming Foundation</span>
-          <h3 class="text-2xl font-headline font-bold mb-3">Scratch, App Inventor, HTML and Python Basics</h3>
-          <p class="detail-copy">Students begin with logic and software confidence through block coding, app creation, basic web structure, and Python fundamentals so they can later control hardware and build intelligent systems.</p>
+          <span class="detail-label">Logic and App Control</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Scratch, App Inventor and Python Basics</h3>
+          <p class="detail-copy">Students begin with coding logic, interface building, and Python fundamentals so they can understand both robot behavior and real-world command flow.</p>
           <div class="chip-row">
             <span class="detail-chip">Scratch</span>
             <span class="detail-chip">App Inventor</span>
-            <span class="detail-chip">HTML Basics</span>
             <span class="detail-chip">Python Basics</span>
           </div>
         </div>
         <div class="detail-card">
           <span class="detail-label">Electronics Foundation</span>
           <h3 class="text-2xl font-headline font-bold mb-3">Basic Electronics, Arduino and Sensor Integration</h3>
-          <p class="detail-copy">Learners build comfort with circuits, actuators, microcontrollers, and real sensor input. This is the stage where code starts interacting with the physical world in a reliable way.</p>
+          <p class="detail-copy">Learners build comfort with circuits, breadboards, microcontrollers, and sensor input so code can reliably drive physical hardware.</p>
           <div class="chip-row">
-            <span class="detail-chip">Basic Electronics</span>
+            <span class="detail-chip">Circuits</span>
             <span class="detail-chip">Arduino</span>
             <span class="detail-chip">Sensors</span>
-            <span class="detail-chip">Motor Control</span>
+            <span class="detail-chip">Motors</span>
           </div>
         </div>
         <div class="detail-card">
-          <span class="detail-label">Robotics Progression</span>
-          <h3 class="text-2xl font-headline font-bold mb-3">R-Star, Champion Lite, Champion and Challenger</h3>
-          <p class="detail-copy">Explorer covers the full build-and-control progression from R-Star through Challenger. Students assemble, troubleshoot, test robot behavior, and develop confidence with progressively smarter machines.</p>
+          <span class="detail-label">Robot Progression</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">R-Star to Challenger Robotics</h3>
+          <p class="detail-copy">Track B covers the full beginner-to-intermediate robot sequence so students learn assembly, troubleshooting, sensor behavior, control logic, and confident build discipline.</p>
           <div class="chip-row">
             <span class="detail-chip">R-Star</span>
             <span class="detail-chip">Champion Lite</span>
@@ -279,11 +192,11 @@
         <div class="detail-card">
           <span class="detail-label">Control and Flight</span>
           <h3 class="text-2xl font-headline font-bold mb-3">Bluetooth Robotics, Manual Drone Flying and AI Foundations</h3>
-          <p class="detail-copy">The final Explorer stage adds phone-commanded robots, manual drone practice, and foundational AI concepts so students understand the difference between control logic and intelligent decision-making.</p>
+          <p class="detail-copy">Students build phone-controlled robots, safe manual drone handling skills, and foundational AI concepts that strengthen the full Track B pathway.</p>
           <div class="chip-row">
-            <span class="detail-chip">Bluetooth Control</span>
+            <span class="detail-chip">Bluetooth</span>
             <span class="detail-chip">Manual Drone</span>
-            <span class="detail-chip">Foundational AI</span>
+            <span class="detail-chip">AI Foundations</span>
           </div>
         </div>
       </div>
@@ -293,8 +206,8 @@
   <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
     <div class="border-l-2 border-primary-container pl-8 mb-12">
       <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container block mb-2">Builds and Labs</span>
-      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">What Students Build in Explorer</h2>
-      <p class="text-white/40 text-lg">Explorer stays practical from start to finish. Students wire, code, assemble, test, and pilot rather than only reading concepts.</p>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">What Students Build in Track B</h2>
+      <p class="text-white/40 text-lg">Track B stays hands-on all the way through. Students wire, assemble, code, test, and pilot instead of only reading theory.</p>
     </div>
     <div class="detail-grid">
       <div class="detail-card glass-panel">
@@ -309,12 +222,12 @@
       </div>
       <div class="detail-card glass-panel">
         <span class="detail-label">Applied Practice</span>
-        <h3 class="text-2xl font-headline font-bold mb-4">Electronics, Apps and Drone Readiness</h3>
+        <h3 class="text-2xl font-headline font-bold mb-4">Electronics, App Control and Drone Readiness</h3>
         <ul class="detail-list">
           <li>Arduino wiring and sensor experiments using real boards, breadboards, and serial programming.</li>
-          <li>Simple app-based control interfaces through App Inventor for real robot interaction.</li>
+          <li>Simple app-based control interfaces through App Inventor for robot interaction.</li>
           <li>Bluetooth command workflows that let robots respond to mobile phone inputs.</li>
-          <li>Manual drone setup, controller handling, safe lift-off, landing, and flight discipline.</li>
+          <li>Manual drone setup, controller handling, safe lift-off, controlled landing, and flight discipline.</li>
         </ul>
       </div>
     </div>
@@ -323,15 +236,15 @@
   <section class="max-w-[1200px] mx-auto px-6 md:px-8 mb-24">
     <div class="border-l-2 border-secondary-container pl-8 mb-12">
       <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Learning Flow</span>
-      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">Explorer in Three Stages</h2>
-      <p class="text-white/40 text-lg">A simple progression that takes learners from beginner coding to robust robot control.</p>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">Track B in Three Stages</h2>
+      <p class="text-white/40 text-lg">A clear 1-year sequence from coding and control to confident robotics builds.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="glass-panel rounded-3xl p-8">
         <div class="card-glow"></div>
         <span class="module-number">01</span>
-        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Code and Logic</h3>
-        <p class="text-white/50 leading-relaxed mb-6">Scratch, App Inventor, HTML basics, and Python basics build the software thinking needed for robotics.</p>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Logic and Interfaces</h3>
+        <p class="text-white/50 leading-relaxed mb-6">Scratch, App Inventor, and Python basics help learners understand instructions, events, commands, and control flow.</p>
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Scratch</span>
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Apps</span>
@@ -342,7 +255,7 @@
         <div class="card-glow"></div>
         <span class="module-number">02</span>
         <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Electronics and Robots</h3>
-        <p class="text-white/50 leading-relaxed mb-6">Students move into circuits, Arduino, sensors, and the full robot sequence from R-Star to Challenger.</p>
+        <p class="text-white/50 leading-relaxed mb-6">Students move into circuits, Arduino, sensors, and the full robot progression from R-Star through Challenger.</p>
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Arduino</span>
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Sensors</span>
@@ -353,11 +266,11 @@
         <div class="card-glow"></div>
         <span class="module-number">03</span>
         <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Control and Flight</h3>
-        <p class="text-white/50 leading-relaxed mb-6">Bluetooth robotics, phone-based control, manual drone practice, and foundational AI concepts complete the Explorer path.</p>
+        <p class="text-white/50 leading-relaxed mb-6">Bluetooth robotics, app control, manual drone practice, and AI foundations round out the full Track B pathway.</p>
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Bluetooth</span>
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Manual Drone</span>
-          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">AI Foundations</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">AI Basics</span>
         </div>
       </div>
     </div>
@@ -365,11 +278,11 @@
 
   <section class="max-w-[900px] mx-auto px-6 md:px-8 text-center">
     <div class="glass-panel rounded-[48px] p-10 md:p-20">
-      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Ready to Start Explorer?</h2>
-      <p class="text-white/40 mb-12 text-lg max-w-2xl mx-auto">Track B Explorer is the required first step before Track B Advanced. Build the coding, electronics, and control foundation first, then move into automation, autonomy, and applied AI.</p>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Ready to Start Track B?</h2>
+      <p class="text-white/40 mb-12 text-lg max-w-2xl mx-auto">Track B is a complete 12-month pathway for Class 7-12 learners, covering logic, electronics, robot progression, app control, manual drone practice, and project builds.</p>
       <div class="flex flex-col md:flex-row justify-center gap-4">
         <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary-container transition-all neon-glow inline-block">Enroll Now</a>
-        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20B%20Explorer." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Chat with Counsellor</a>
+        <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20B." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Chat with Counsellor</a>
         <a href="tel:+919957952907" class="px-10 py-5 rounded-full border border-primary/40 text-primary font-bold text-[11px] uppercase tracking-widest hover:bg-primary/10 transition-all inline-block">Call Counsellor</a>
       </div>
     </div>
@@ -384,6 +297,3 @@
 </footer>
 </body>
 </html>
-
-
-

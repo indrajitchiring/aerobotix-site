@@ -2,8 +2,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description" content="Explore Track B Advanced at Aerobotix in Dibrugarh, Assam with CAD, additive manufacturing, robotic arm automation, IoT systems, autonomous drones, and applied AI.">
-<title>Track B Advanced | Drones, IoT & Advanced Robotics Course in Dibrugarh | Aerobotix</title>
+<meta name="description" content="Explore Track B Advanced at Aerobotix in Dibrugarh, Assam with CAD basics, 3D printing foundations, introductory IoT systems, smart robot mechanisms, and integrated capstone projects.">
+<title>Track B Advanced | Smart Robotics Design Course in Dibrugarh | Aerobotix</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -13,142 +13,27 @@
     --purple-glow: #7701d0;
     --light-blue: #a5f3fc;
   }
-  body {
-    background-color: var(--deep-black);
-    color: #e5e2e1;
-    overflow-x: hidden;
-    font-family: 'Inter', sans-serif;
-  }
-  .noise-texture {
-    position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
-  .neural-bg {
-    position: fixed; inset: 0; z-index: 0;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(119, 1, 208, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 70% 80%, rgba(0, 242, 255, 0.03) 0%, transparent 40%);
-  }
-  .glass-panel {
-    background: rgba(15, 15, 15, 0.4);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .glass-panel:hover {
-    transform: translateY(-4px);
-    border-color: rgba(119, 1, 208, 0.3);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(119, 1, 208, 0.08);
-  }
-  .card-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s;
-    pointer-events: none;
-    filter: blur(40px);
-  }
+  body { background-color: var(--deep-black); color: #e5e2e1; overflow-x: hidden; font-family: 'Inter', sans-serif; }
+  .noise-texture { position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+  .neural-bg { position: fixed; inset: 0; z-index: 0; background: radial-gradient(circle at 30% 20%, rgba(119, 1, 208, 0.05) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0, 242, 255, 0.03) 0%, transparent 40%); }
+  .glass-panel { background: rgba(15, 15, 15, 0.4); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; }
+  .glass-panel:hover { transform: translateY(-4px); border-color: rgba(119, 1, 208, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(119, 1, 208, 0.08); }
+  .card-glow { position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%); opacity: 0; transform: translate(-50%, -50%); transition: opacity 0.5s; pointer-events: none; filter: blur(40px); }
   .glass-panel:hover .card-glow { opacity: 0.08; }
-  .hero-gradient-text {
-    background: linear-gradient(135deg, #fff 0%, #dcb8ff 50%, #7701d0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  .hero-gradient-text { background: linear-gradient(135deg, #fff 0%, #dcb8ff 50%, #7701d0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .neon-glow-purple { box-shadow: 0 0 15px rgba(119, 1, 208, 0.4); transition: all 0.3s ease; }
   .neon-glow-purple:hover { box-shadow: 0 0 30px rgba(119, 1, 208, 0.7); }
-  .module-number {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    background: linear-gradient(135deg, rgba(119,1,208,0.2), rgba(220,184,255,0.15));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .detail-shell {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 32px;
-    padding: 32px;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-  }
-  .detail-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-  }
-  .detail-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 24px;
-    padding: 24px;
-  }
-  .detail-label {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-    color: #dcb8ff;
-    margin-bottom: 12px;
-    display: block;
-  }
-  .detail-copy {
-    color: rgba(255,255,255,0.64);
-    line-height: 1.7;
-    font-size: 0.98rem;
-  }
-  .detail-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 10px;
-  }
-  .detail-list li {
-    color: rgba(255,255,255,0.7);
-    line-height: 1.55;
-    font-size: 0.95rem;
-    padding-left: 16px;
-    position: relative;
-  }
-  .detail-list li::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    background: #dcb8ff;
-    box-shadow: 0 0 10px rgba(220,184,255,0.55);
-  }
-  .chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
-  .detail-chip {
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.65);
-  }
+  .module-number { font-family: 'Space Grotesk', sans-serif; font-size: 4rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, rgba(119,1,208,0.2), rgba(220,184,255,0.15)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .detail-shell { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 32px; padding: 32px; backdrop-filter: blur(16px); box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+  .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .detail-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 24px; }
+  .detail-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.24em; color: #dcb8ff; margin-bottom: 12px; display: block; }
+  .detail-copy { color: rgba(255,255,255,0.64); line-height: 1.7; font-size: 0.98rem; }
+  .detail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .detail-list li { color: rgba(255,255,255,0.7); line-height: 1.55; font-size: 0.95rem; padding-left: 16px; position: relative; }
+  .detail-list li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; position: absolute; left: 0; top: 0.65em; background: #dcb8ff; box-shadow: 0 0 10px rgba(220,184,255,0.55); }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .detail-chip { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.65); }
   @media (max-width: 768px) {
     .detail-shell { padding: 20px; border-radius: 24px; }
     .detail-grid { grid-template-columns: 1fr; }
@@ -178,6 +63,35 @@
     }
   }
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var isLocalFile = window.location.protocol === "file:";
+    var homeUrl = isLocalFile
+      ? new URL("code.html", window.location.href)
+      : new URL("index.html", window.location.href);
+
+    if (isLocalFile && document.referrer) {
+      try {
+        var referrerUrl = new URL(document.referrer);
+        if (referrerUrl.protocol === "file:" && /(?:code|index)\.html$/i.test(referrerUrl.pathname)) {
+          referrerUrl.hash = "";
+          homeUrl = referrerUrl;
+        }
+      } catch (error) {
+      }
+    }
+
+    document.querySelectorAll("[data-home-link]").forEach(function (link) {
+      link.href = homeUrl.href;
+    });
+
+    document.querySelectorAll("[data-home-section]").forEach(function (link) {
+      var sectionUrl = new URL(homeUrl.href);
+      sectionUrl.hash = link.getAttribute("data-home-section");
+      link.href = sectionUrl.href;
+    });
+  });
+</script>
 </head>
 <body class="selection:bg-secondary-container selection:text-white">
 <div class="noise-texture"></div>
@@ -185,18 +99,18 @@
 
 <nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
   <div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
-    <a href="https://aerobotix.co.in/" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
+    <a href="index.html" data-home-link class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
       <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
       Aerobotix
     </a>
     <div class="hidden md:flex gap-8 items-center">
-      <a href="https://aerobotix.co.in/#pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
-      <a href="https://aerobotix.co.in/#journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
-      <a href="https://aerobotix.co.in/#features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
-      <a href="https://aerobotix.co.in/#about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
+      <a href="index.html#pathways" data-home-section="pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
+      <a href="index.html#journey" data-home-section="journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
+      <a href="index.html#features" data-home-section="features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
+      <a href="index.html#about" data-home-section="about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
     </div>
     <div class="flex gap-4 md:gap-6 items-center">
-      <a href="https://aerobotix.co.in/" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
+      <a href="index.html" data-home-link class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
       <a href="aerobotix_enrollment_form.html" class="bg-secondary-container text-white px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-secondary transition-all neon-glow-purple">Enroll Now</a>
     </div>
   </div>
@@ -209,10 +123,10 @@
       <div>
         <div class="flex items-center gap-3 mb-3 flex-wrap">
           <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block">Track B Advanced</span>
-          <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full">Post Explorer</span>
+          <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full">Months 7-12</span>
         </div>
         <h1 class="text-4xl md:text-7xl font-headline font-bold tracking-tighter hero-gradient-text mb-6">Track B Advanced</h1>
-        <p class="text-white/50 text-lg md:text-xl max-w-3xl leading-relaxed">The second 12-month senior pathway for students who have completed Explorer. This stage focuses on design, fabrication, industrial-style automation, cloud systems, autonomous drones, and practical applied AI.</p>
+        <p class="text-white/50 text-lg md:text-xl max-w-3xl leading-relaxed">The second 6 months of the one-year Track B route. Advanced focuses on design, smart mechanisms, connected prototypes, and integrated robotics projects without the heavier specialization moved to Pathway C.</p>
       </div>
     </div>
     <div class="flex flex-wrap gap-6 items-center">
@@ -226,11 +140,11 @@
       </div>
       <div class="glass-panel px-6 py-4 rounded-2xl">
         <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Duration</span>
-        <span class="text-2xl font-bold font-headline">12 Months</span>
+        <span class="text-2xl font-bold font-headline">6 Months</span>
       </div>
       <div class="glass-panel px-6 py-4 rounded-2xl">
-        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Requirement</span>
-        <span class="text-2xl font-bold font-headline">Explorer First</span>
+        <span class="text-[9px] font-bold tracking-widest text-white/30 uppercase block mb-1">Track B Total</span>
+        <span class="text-2xl font-bold font-headline">1 Year</span>
       </div>
     </div>
   </section>
@@ -239,51 +153,48 @@
     <div class="border-l-2 border-secondary-container pl-8 mb-12">
       <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Track B Advanced Syllabus</span>
       <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">How Advanced Progresses</h2>
-      <p class="text-white/40 text-lg">Advanced turns strong builders into system designers. It focuses on fabrication, automation, connected platforms, autonomous flight, and applied AI with clear robotics use-cases.</p>
+      <p class="text-white/40 text-lg">Advanced completes Track B with stronger design, connected prototyping, and integration skills, while the heavier industrial and autonomous systems shift into Pathway C.</p>
     </div>
     <div class="detail-shell">
       <div class="detail-grid">
         <div class="detail-card">
-          <span class="detail-label">Design and Fabrication</span>
-          <h3 class="text-2xl font-headline font-bold mb-3">Creo CAD and Additive Manufacturing</h3>
-          <p class="detail-copy">Students learn to design engineered parts, assemblies, and custom structures in Creo, then convert those designs into real prototypes through additive manufacturing workflows.</p>
+          <span class="detail-label">Design and Prototyping</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Creo CAD and 3D Printing Basics</h3>
+          <p class="detail-copy">Students learn to design practical components in Creo and turn them into early physical prototypes using structured 3D printing workflows.</p>
           <div class="chip-row">
-            <span class="detail-chip">Creo CAD</span>
+            <span class="detail-chip">Creo Basics</span>
             <span class="detail-chip">Assemblies</span>
             <span class="detail-chip">3D Printing</span>
-            <span class="detail-chip">Additive Manufacturing</span>
           </div>
         </div>
         <div class="detail-card">
-          <span class="detail-label">Automation</span>
-          <h3 class="text-2xl font-headline font-bold mb-3">Robotic Arm Automation (4 Axis)</h3>
-          <p class="detail-copy">This subject moves students into industrial-style manipulation and automation logic through four-axis builds, motion sequencing, and real robot control practice.</p>
+          <span class="detail-label">Mechanisms</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Smart Mechanisms and Servo Systems</h3>
+          <p class="detail-copy">Advanced introduces better motion control, mechanism tuning, servo coordination, and structured robot extensions that prepare students for higher-end automation later.</p>
           <div class="chip-row">
-            <span class="detail-chip">4 Axis Control</span>
-            <span class="detail-chip">Industrial Robotics</span>
-            <span class="detail-chip">Automation Logic</span>
+            <span class="detail-chip">Servo Control</span>
+            <span class="detail-chip">Robot Mechanisms</span>
+            <span class="detail-chip">Integration</span>
           </div>
         </div>
         <div class="detail-card">
-          <span class="detail-label">Connected Systems</span>
-          <h3 class="text-2xl font-headline font-bold mb-3">Cloud Based IoT Systems and Remote Dashboards</h3>
-          <p class="detail-copy">Students connect devices to the cloud, monitor them remotely, and build dashboards that control hardware in real time through lightweight IoT platforms.</p>
+          <span class="detail-label">Connected Prototyping</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Intro IoT and Connected Devices</h3>
+          <p class="detail-copy">Learners connect devices, view basic remote data, and understand how dashboards and live monitoring can support smart robotics systems.</p>
           <div class="chip-row">
-            <span class="detail-chip">IoT Systems</span>
+            <span class="detail-chip">Connected Devices</span>
+            <span class="detail-chip">Dashboards</span>
             <span class="detail-chip">Live Monitoring</span>
-            <span class="detail-chip">Remote Dashboards</span>
-            <span class="detail-chip">Cloud Control</span>
           </div>
         </div>
         <div class="detail-card">
-          <span class="detail-label">Autonomy and Intelligence</span>
-          <h3 class="text-2xl font-headline font-bold mb-3">Autonomous Drones, Raspberry Pi and Applied AI</h3>
-          <p class="detail-copy">The advanced stage expands into GPS-guided drones, PID tuning, Raspberry Pi systems, and practical applied AI for robot vision, detection, and decision-making use-cases.</p>
+          <span class="detail-label">Capstone Integration</span>
+          <h3 class="text-2xl font-headline font-bold mb-3">Integrated Robotics Projects</h3>
+          <p class="detail-copy">The final stage combines design, electronics, control, and connected features into polished project builds that prepare students for Pathway C or higher-level STEM work.</p>
           <div class="chip-row">
-            <span class="detail-chip">Autonomous Drone</span>
-            <span class="detail-chip">Raspberry Pi</span>
-            <span class="detail-chip">Applied AI</span>
-            <span class="detail-chip">Humanoid Robotics</span>
+            <span class="detail-chip">Capstone Build</span>
+            <span class="detail-chip">Prototype Testing</span>
+            <span class="detail-chip">System Integration</span>
           </div>
         </div>
       </div>
@@ -294,26 +205,25 @@
     <div class="border-l-2 border-primary-container pl-8 mb-12">
       <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-primary-container block mb-2">Builds and Labs</span>
       <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">What Students Build in Advanced</h2>
-      <p class="text-white/40 text-lg">Advanced is where design, automation, networking, and autonomy come together in larger engineering-style projects.</p>
+      <p class="text-white/40 text-lg">This stage is less about heavy specialization and more about refining design, connection, and integration quality.</p>
     </div>
     <div class="detail-grid">
       <div class="detail-card glass-panel">
-        <span class="detail-label">Design and Automation</span>
-        <h3 class="text-2xl font-headline font-bold mb-4">Fabrication and Robotics Projects</h3>
+        <span class="detail-label">Design Projects</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Prototyping and Mechanism Builds</h3>
         <ul class="detail-list">
-          <li>Creo part design, assemblies, STL preparation, and 3D printed functional prototypes.</li>
-          <li>Robotic Arm Automation (4 Axis) builds with staged movement logic and programmed task sequences.</li>
-          <li>Humanoid Robot Building with advanced integration thinking, body coordination, and higher-order system assembly.</li>
+          <li>Creo part design, assemblies, STL preparation, and functional 3D printed prototype workflows.</li>
+          <li>Servo-based motion builds, mechanical linkages, and improved robot-body integration.</li>
+          <li>Refined project finishing with fit, movement, stability, and performance testing.</li>
         </ul>
       </div>
       <div class="detail-card glass-panel">
-        <span class="detail-label">Connected and Autonomous Systems</span>
-        <h3 class="text-2xl font-headline font-bold mb-4">IoT, Drone and AI Projects</h3>
+        <span class="detail-label">Connected Projects</span>
+        <h3 class="text-2xl font-headline font-bold mb-4">Monitoring and Capstone Systems</h3>
         <ul class="detail-list">
-          <li>Cloud Based IoT Systems, Remote Dashboards and live hardware monitoring.</li>
-          <li>Raspberry Pi projects for GPIO interfacing, Python-based hardware control, and higher-level system integration.</li>
-          <li>Autonomous drone workflows using GPS, PID control, and programmed flight paths.</li>
-          <li>Applied AI projects focused on vision, detection, and robotics decision-making use-cases.</li>
+          <li>Intro IoT prototypes with simple connected devices, dashboards, and live monitoring concepts.</li>
+          <li>Intermediate project integration that combines mechanics, electronics, and remote visibility.</li>
+          <li>Capstone builds that package Track B learning into polished, presentable robotics projects.</li>
         </ul>
       </div>
     </div>
@@ -323,14 +233,14 @@
     <div class="border-l-2 border-secondary-container pl-8 mb-12">
       <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary block mb-2">Learning Flow</span>
       <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-2">Advanced in Three Stages</h2>
-      <p class="text-white/40 text-lg">A progression from design and automation into connected autonomy and practical AI.</p>
+      <p class="text-white/40 text-lg">A focused 6-month finish that completes Track B as a one-year route.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="glass-panel rounded-3xl p-8">
         <div class="card-glow"></div>
         <span class="module-number">01</span>
-        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Design and Fabricate</h3>
-        <p class="text-white/50 leading-relaxed mb-6">Creo CAD, additive manufacturing, and prototype thinking help students create custom engineering solutions.</p>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Design and Prototype</h3>
+        <p class="text-white/50 leading-relaxed mb-6">Creo basics and 3D printing foundations help learners move from ideas to physical proof-of-concept builds.</p>
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Creo</span>
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">3D Print</span>
@@ -340,23 +250,23 @@
       <div class="glass-panel rounded-3xl p-8">
         <div class="card-glow"></div>
         <span class="module-number">02</span>
-        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Automate and Connect</h3>
-        <p class="text-white/50 leading-relaxed mb-6">Robotic Arm Automation (4 Axis) and Cloud Based IoT Systems and Remote Dashboards introduce industrial-style control and connected hardware.</p>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Connect and Refine</h3>
+        <p class="text-white/50 leading-relaxed mb-6">Smart mechanisms, connected devices, dashboards, and live monitoring create more refined robotics systems.</p>
         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">4 Axis</span>
-          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Connected Devices</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Mechanisms</span>
           <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Dashboards</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Monitoring</span>
         </div>
       </div>
       <div class="glass-panel rounded-3xl p-8">
         <div class="card-glow"></div>
         <span class="module-number">03</span>
-        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Autonomy and AI</h3>
-        <p class="text-white/50 leading-relaxed mb-6">Students finish with autonomous drone systems, Raspberry Pi integration, and applied AI for robotics use-cases.</p>
+        <h3 class="text-xl font-bold font-headline tracking-tight mt-4 mb-2">Finish Strong</h3>
+        <p class="text-white/50 leading-relaxed mb-6">The final capstone phase brings design, electronics, control, and connectivity into complete showcase projects.</p>
         <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">GPS Drone</span>
-          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">PID</span>
-          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Applied AI</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Capstone</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Integration</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/5 text-[9px] uppercase font-bold text-white/50">Showcase</span>
         </div>
       </div>
     </div>
@@ -364,8 +274,8 @@
 
   <section class="max-w-[900px] mx-auto px-6 md:px-8 text-center">
     <div class="glass-panel rounded-[48px] p-10 md:p-20">
-      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Ready for Advanced Systems?</h2>
-      <p class="text-white/40 mb-12 text-lg max-w-2xl mx-auto">Track B Advanced is designed for learners who have already completed Explorer and are ready to step into fabrication, automation, autonomous drones, connected systems, and applied AI.</p>
+      <h2 class="text-3xl md:text-5xl font-headline font-bold tracking-tighter mb-6">Complete the One-Year Track B Route</h2>
+      <p class="text-white/40 mb-12 text-lg max-w-2xl mx-auto">Track B Advanced completes the one-year Track B pathway. Students wanting heavier specialization after this stage can progress into Pathway C from its second-half entry point.</p>
       <div class="flex flex-col md:flex-row justify-center gap-4">
         <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-10 py-5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary-container transition-all neon-glow inline-block">Enroll Now</a>
         <a href="https://wa.me/919957952907?text=Hi%2C%20I%27m%20interested%20in%20Track%20B%20Advanced." target="_blank" rel="noopener noreferrer" class="px-10 py-5 rounded-full border border-white/20 text-white font-bold text-[11px] uppercase tracking-widest hover:bg-white/5 transition-all inline-block">Chat with Counsellor</a>
@@ -383,6 +293,3 @@
 </footer>
 </body>
 </html>
-
-
-

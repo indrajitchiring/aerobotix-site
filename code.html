@@ -511,7 +511,7 @@
         }
         body[data-device="mobile"] #pathways a[href="track-a.html"],
         body[data-device="mobile"] #pathways a[href="track-b.html"],
-        body[data-device="mobile"] #pathways a[href="track-b-advanced.html"],
+        body[data-device="mobile"] #pathways a[href="pathway-c.html"],
         body[data-device="mobile"] #pathways a[href="professionals.html"] {
             padding-top: 0.95rem;
             padding-bottom: 0.95rem;
@@ -844,20 +844,19 @@
 </div>
 </section>
 <!-- Pathways Section -->
-<section id="pathways" class="py-32 px-6 md:px-8 max-w-[1440px] mx-auto relative">
-<div class="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-l-2 border-primary-container pl-8">
-<div class="max-w-2xl">
+<section id="pathways" class="py-32 px-6 md:px-8 relative">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
 <h2 class="text-4xl md:text-6xl font-headline font-bold tracking-tighter mb-6">Choose Your<br/>Neural Pathway</h2>
 <p class="text-white/40 text-base md:text-lg">Choose the pathway that fits your stage, from junior robotics foundations to advanced automation, drones, and intelligent systems.</p>
 </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 relative">
-<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0 relative">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch auto-rows-fr">
+<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0">
 <div class="card-core"></div>
-<div class="text-4xl mb-6">JR</div>
-<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary-container mb-2 block truncate">Class 4-6</span>
-<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-primary-container transition-colors line-clamp-2">Junior Robotics (Track A)</h3>
-<p class="text-sm text-white/40 mb-8 leading-relaxed line-clamp-3">A 5-month junior pathway covering gears, robot building, RoboCHAMP, and the basics of AI.</p>
+<div class="text-3xl md:text-4xl mb-6 opacity-80 group-hover:opacity-100 transition-opacity font-headline font-bold tracking-tight leading-none">Junior Robotics</div>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary-container mb-2 block">Class 4-6</span>
+<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-primary-container transition-colors">Track A</h3>
+<p class="text-sm text-white/40 mb-8 leading-relaxed line-clamp-3">A 5-month hands-on start in mechanics, first robots, Robochamp builds, and AI fundamentals for young learners.</p>
 <div class="flex flex-wrap gap-2 mb-10">
 <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">Play with gears</span>
 <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">How AI Thinks</span>
@@ -884,13 +883,13 @@
 <div class="absolute top-0 right-0 p-4">
 <span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-secondary-container text-white px-3 py-1 rounded-full whitespace-nowrap">Track B</span>
 </div>
-<div class="text-4xl mb-6">EX</div>
-<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-secondary mb-2 block truncate">Class 7-12</span>
-<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-secondary transition-colors line-clamp-2">Track B Explorer</h3>
-<p class="text-sm text-white/60 mb-8 leading-relaxed line-clamp-3">A 12-month foundation in coding, electronics, Arduino, sensors, R-Star to Challenger robotics, Bluetooth control, and manual drone flying.</p>
+<div class="text-3xl md:text-4xl mb-6 font-headline font-bold tracking-tight leading-none">Explorer</div>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-secondary mb-2 block">Class 7-12</span>
+<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-secondary transition-colors">Track B</h3>
+<p class="text-sm text-white/60 mb-8 leading-relaxed line-clamp-3">A 12-month Track B pathway covering logic, Arduino, sensors, R-Star to Challenger robotics, Bluetooth control, and manual drone flying.</p>
 <div class="flex flex-wrap gap-2 mb-10">
 <span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">Scratch</span>
-<span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">Python</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">Arduino</span>
 <span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">Challenger</span>
 <span class="px-2.5 py-1 rounded-full bg-secondary-container/20 border border-secondary-container/30 text-[9px] uppercase font-bold text-secondary whitespace-nowrap">Manual Drone</span>
 </div>
@@ -910,17 +909,20 @@
 <a href="track-b.html" class="w-full py-4 rounded-xl bg-secondary-container text-white text-[10px] font-bold uppercase tracking-widest neon-glow inline-block text-center">Explore Pathway</a>
 </div>
 </div>
-<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0 relative border border-white/10">
+<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0 relative border border-orange-400/20 bg-gradient-to-b from-orange-400/10 to-background/40">
 <div class="card-core"></div>
-<div class="text-4xl mb-6">ADV</div>
-<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-secondary mb-2 block truncate">Post Explorer</span>
-<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-secondary transition-colors line-clamp-2">Track B Advanced</h3>
-<p class="text-sm text-white/50 mb-8 leading-relaxed line-clamp-3">A 12-month advanced path after Explorer covering Creo, 3D printing, robotic arm automation, cloud-based IoT systems, autonomous drones, and humanoid robot building.</p>
+<div class="absolute top-0 right-0 p-4">
+<span class="text-[8px] font-bold tracking-[0.2em] uppercase bg-orange-500 text-white px-3 py-1 rounded-full whitespace-nowrap">Pathway C</span>
+</div>
+<div class="text-3xl md:text-4xl mb-6 font-headline font-bold tracking-tight leading-none">Advanced</div>
+<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-orange-300 mb-2 block">12+/Diploma/Graduates</span>
+<h3 class="text-xl font-bold tracking-tight mb-4 text-white">Pathway C</h3>
+<p class="text-sm text-white/50 mb-8 leading-relaxed line-clamp-3">A fast-track one-year path from basics to advanced systems, ending with 4-axis automation, autonomous drones, cloud IoT, humanoid robotics, and applied AI.</p>
 <div class="flex flex-wrap gap-2 mb-10">
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/70 whitespace-nowrap">Robotic Arm</span>
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/70 whitespace-nowrap">IoT Cloud</span>
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/70 whitespace-nowrap">Autonomous Drone</span>
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/70 whitespace-nowrap">Humanoid Robot</span>
+<span class="px-2.5 py-1 rounded-full bg-orange-400/10 border border-orange-400/20 text-[9px] uppercase font-bold text-orange-200 whitespace-nowrap">4 Axis</span>
+<span class="px-2.5 py-1 rounded-full bg-orange-400/10 border border-orange-400/20 text-[9px] uppercase font-bold text-orange-200 whitespace-nowrap">Autonomous Drone</span>
+<span class="px-2.5 py-1 rounded-full bg-orange-400/10 border border-orange-400/20 text-[9px] uppercase font-bold text-orange-200 whitespace-nowrap">Cloud IoT</span>
+<span class="px-2.5 py-1 rounded-full bg-orange-400/10 border border-orange-400/20 text-[9px] uppercase font-bold text-orange-200 whitespace-nowrap">Humanoid</span>
 </div>
 <div class="mt-auto space-y-4">
 <div class="flex justify-between items-baseline border-t border-white/10 pt-6 gap-2">
@@ -929,41 +931,15 @@
 </div>
 <div class="flex justify-between items-baseline gap-2">
 <span class="text-[10px] font-bold tracking-widest text-white/30 uppercase flex-shrink-0">Monthly</span>
-<span class="text-xl font-bold truncate">Rs 999</span>
+<span class="text-xl font-bold text-orange-300 truncate">Rs 999</span>
 </div>
-<div class="flex justify-between items-baseline gap-2 rounded-xl border border-primary-container/20 bg-primary-container/10 px-4 py-3">
-<span class="text-[10px] font-bold tracking-widest text-primary-container uppercase flex-shrink-0">One-Time</span>
-<span class="text-xl font-bold text-primary-container truncate">Rs 9999/-</span>
+<div class="flex justify-between items-baseline gap-2 rounded-xl border border-orange-400/20 bg-orange-400/10 px-4 py-3">
+<span class="text-[10px] font-bold tracking-widest text-orange-300 uppercase flex-shrink-0">One-Time</span>
+<span class="text-xl font-bold text-orange-300 truncate">Rs 9999/-</span>
 </div>
-<div class="text-[10px] uppercase tracking-widest text-white/35 pt-1">Requires Track B Explorer</div>
-<a href="track-b-advanced.html" class="w-full py-4 rounded-xl border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all inline-block text-center">View Advanced</a>
+<div class="text-[10px] uppercase tracking-widest text-white/35 pt-1">Track B completers can join Month 7</div>
+<a href="pathway-c.html" class="w-full py-4 rounded-xl border border-orange-400/30 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-orange-400 hover:text-black transition-all inline-block text-center">Select Pathway</a>
 </div>
-</div>
-<div class="glass-panel p-8 md:p-10 rounded-3xl flex flex-col h-full group min-w-0">
-<div class="card-core"></div>
-<div class="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition-opacity">AI</div>
-<span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary-container mb-2 block truncate">Professional</span>
-<h3 class="text-xl font-bold tracking-tight mb-4 group-hover:text-primary-container transition-colors line-clamp-2">AI for Professionals</h3>
-<p class="text-sm text-white/40 mb-8 leading-relaxed line-clamp-3">A 6-month AI pathway for professionals focused on automation, app building, and practical AI tools.</p>
-<div class="flex flex-wrap gap-2 mb-10">
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">Claude Code</span>
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">App Building</span>
-<span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] uppercase font-bold text-white/60 whitespace-nowrap">AI Agents</span>
-</div>
-<div class="mt-auto space-y-4">
-<div class="flex justify-between items-baseline border-t border-white/10 pt-6 gap-2">
-<span class="text-[10px] font-bold tracking-widest text-white/30 uppercase flex-shrink-0">Duration</span>
-<span class="text-base font-bold truncate">6 Months</span>
-</div>
-<div class="flex justify-between items-baseline gap-2">
-<span class="text-[10px] font-bold tracking-widest text-white/30 uppercase flex-shrink-0">Monthly</span>
-<span class="text-xl font-bold truncate">Rs 499</span>
-</div>
-<div class="flex justify-between items-baseline gap-2 rounded-xl border border-primary-container/20 bg-primary-container/10 px-4 py-3">
-<span class="text-[10px] font-bold tracking-widest text-primary-container uppercase flex-shrink-0">One-Time</span>
-<span class="text-xl font-bold text-primary-container truncate">Rs 2499/-</span>
-</div>
-<a href="professionals.html" class="w-full py-4 rounded-xl border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all inline-block text-center">Select Pathway</a>
 </div>
 </div>
 </div>
@@ -1054,6 +1030,7 @@
         })();
     </script>
 </body></html>
+
 
 
 

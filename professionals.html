@@ -98,6 +98,35 @@
     }
   }
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var isLocalFile = window.location.protocol === "file:";
+    var homeUrl = isLocalFile
+      ? new URL("code.html", window.location.href)
+      : new URL("index.html", window.location.href);
+
+    if (isLocalFile && document.referrer) {
+      try {
+        var referrerUrl = new URL(document.referrer);
+        if (referrerUrl.protocol === "file:" && /(?:code|index)\.html$/i.test(referrerUrl.pathname)) {
+          referrerUrl.hash = "";
+          homeUrl = referrerUrl;
+        }
+      } catch (error) {
+      }
+    }
+
+    document.querySelectorAll("[data-home-link]").forEach(function (link) {
+      link.href = homeUrl.href;
+    });
+
+    document.querySelectorAll("[data-home-section]").forEach(function (link) {
+      var sectionUrl = new URL(homeUrl.href);
+      sectionUrl.hash = link.getAttribute("data-home-section");
+      link.href = sectionUrl.href;
+    });
+  });
+</script>
 </head>
 <body class="selection:bg-primary-container selection:text-black">
 <div class="noise-texture"></div>
@@ -106,18 +135,18 @@
 <!-- Navigation -->
 <nav class="fixed top-0 w-full z-50 bg-[#050505]/40 backdrop-blur-xl border-b border-white/5">
 <div class="flex justify-between items-center px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
-  <a href="https://aerobotix.co.in/" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
+  <a href="index.html" data-home-link class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 font-headline">
     <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
     Aerobotix
   </a>
   <div class="hidden md:flex gap-8 items-center">
-    <a href="https://aerobotix.co.in/#pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
-    <a href="https://aerobotix.co.in/#journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
-    <a href="https://aerobotix.co.in/#features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
-    <a href="https://aerobotix.co.in/#about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
+    <a href="index.html#pathways" data-home-section="pathways" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Pathways</a>
+    <a href="index.html#journey" data-home-section="journey" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Journey</a>
+    <a href="index.html#features" data-home-section="features" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Features</a>
+    <a href="index.html#about" data-home-section="about" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">About</a>
   </div>
   <div class="flex gap-4 md:gap-6 items-center">
-    <a href="https://aerobotix.co.in/" class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
+    <a href="index.html" data-home-link class="text-white/60 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-widest">Back</a>
     <a href="aerobotix_enrollment_form.html" class="bg-white text-black px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-primary-container transition-all">Enroll Now</a>
   </div>
 </div>
